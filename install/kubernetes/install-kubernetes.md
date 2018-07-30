@@ -51,7 +51,7 @@ kubeadm init
 ```
 7. Once "kubeadm init" completes, save the "join" command that will be printed on the shell, to a file of your choice. This will be needed to add new nodes to your cluster.
 
-   ```
+```
 example:
 "kubeadm join 192.168.1.3:6443 --token 0smq4g.7pmg2jqc8arl1uz7 --discovery-token-ca-cert-hash sha256:d92ac0785b1435666d726f4bc54fde58693f87cf91371d9fd553da4a40813650"
 ```
