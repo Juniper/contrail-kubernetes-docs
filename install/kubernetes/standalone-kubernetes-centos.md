@@ -21,7 +21,7 @@ This wiki will describe the most simplest of all: **A single yaml based install*
   Note: Replace x.x.x.x with the IP of your Kubernetes Master node.
 
 ```
-K8S_MASTER_IP=x.x.x.x;  mkdir -pm 777 /var/lib/contrail/kafka-logs; curl https://raw.githubusercontent.com/Juniper/contrail-kubernetes-docs/master/install/kubernetes/templates/contrail-single-step-cni-install-ubuntu.yaml | sed "s/{{ K8S_MASTER_IP }}/$K8S_MASTER_IP/g" | kubectl apply -f -
+K8S_MASTER_IP=x.x.x.x;  mkdir -pm 777 /var/lib/contrail/kafka-logs; curl https://raw.githubusercontent.com/Juniper/contrail-kubernetes-docs/master/install/kubernetes/templates/contrail-single-step-cni-install-centos.yaml | sed "s/{{ K8S_MASTER_IP }}/$K8S_MASTER_IP/g" | kubectl apply -f -
 ```
 
 # What just happened ?
