@@ -108,7 +108,7 @@ debug_level=2
 deployment_type=origin
 openshift_release=v3.7
 openshift_pkg_version=-3.7.1-2.el7
-openshift_repos_enable_testing=true
+#openshift_repos_enable_testing=true
 containerized=false
 openshift_install_examples=true
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
@@ -116,31 +116,57 @@ osm_cluster_network_cidr=10.32.0.0/12
 openshift_portal_net=10.96.0.0/12
 openshift_use_dnsmasq=true
 openshift_clock_enabled=true
-openshift_hosted_manage_registry=false
-openshift_hosted_manage_router=false
+openshift_hosted_manage_registry=true
+openshift_hosted_manage_router=true
 openshift_enable_service_catalog=false
 openshift_use_openshift_sdn=false
 os_sdn_network_plugin_name='cni'
-openshift_disable_check=disk_availability,package_version,docker_storage
-# Below are Contrail variables. Comment them out if you don't want to install Contrail through ansible-playbook
+openshift_disable_check=memory_availability,package_availability,disk_availability,package_version,docker_storage
+openshift_docker_insecure_registries=ci-repo.englab.juniper.net:5000
 
 openshift_use_contrail=true
-contrail_container_tag=master-centos7-newton-bld-17
-contrail_registry=docker.io/opencontrailnightly
-contrail_nodes=10.84.11.11
-vrouter_physical_interface={interface-name(eg eth0)}
-contrail_vip=10.84.11.11
+contrail_version=5.0
+contrail_container_tag=ocata-5.0-156
+contrail_registry=ci-repo.englab.juniper.net:5000
+# Username /Password for private Docker regiteries
+#contrail_registry_username=test
+#contrail_registry_password=test
+#vrouter_physical_interface=ens160
+contrail_vip=10.87.65.48
+vrouter_gateway=10.84.13.254
+#docker_version=1.13.1
 
 [masters]
-10.84.11.11 openshift_hostname=server1
+10.84.13.51 openshift_hostname=a6s41node1
 
 [etcd]
-10.84.11.11 openshift_hostname=server1
+10.84.13.51 openshift_hostname=a6s41node1
 
 [nodes]
-10.84.11.11 openshift_hostname=server1
-10.84.11.22 openshift_hostname=server2
+10.84.13.51 openshift_hostname=a6s41node1
+10.84.13.52 openshift_hostname=a6s41node2
 
 [openshift_ca]
-10.84.11.11 openshift_hostname=server1
+10.84.13.51 openshift_hostname=a6s41node1
+
+# Contrail master on different subnet, if vrouter interface is provided it takes precedence
+[contrail_masters]
+20.1.1.1 openshift_hostname=a6s41node1
+
+# Contrail vars with default values
+[contrail_vars]
+#kubernetes_api_server=10.84.13.51
+#kubernetes_api_port=8080
+#kubernetes_api_secure_port=8443
+#cluster_name=k8s
+#cluster_project={}
+#cluster_network={}
+#pod_subnets=10.32.0.0/12
+#ip_fabric_subnets=10.64.0.0/12
+#service_subnets=10.96.0.0/12
+#ip_fabric_forwarding=false
+#ip_fabric_snat=false
+#public_fip_pool={}
+#vnc_endpoint_ip=20.1.1.1
+#vnc_endpoint_port=8082
 ```
