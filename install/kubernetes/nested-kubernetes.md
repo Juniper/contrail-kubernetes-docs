@@ -1,5 +1,7 @@
 Nested mode is when Contrail provides networking for a Kubernetes cluster that is provisioned on an Contail-Openstack cluster. Contrail components are shared between the two clusters.
 
+![Contrail Standalone Solution](/images/nested-kubernetes.png)
+
 # __Prerequisites__
 
 Please ensure that the following prerequisites are met, for a successful provisioning of Nested Contrail-Kubernetes cluster.

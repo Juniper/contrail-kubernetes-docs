@@ -6,6 +6,8 @@ There is a need to provide pod addressing, network isolation, policy based secur
 
 Currently K8s provides a flat networking model wherein all pods can talk to each other. Opencontrail will add additional networking functionality to the solution - multi-tenancy, network isolation, micro-segmentation with network policies, load-balancing etc. 
 
+![Contrail Solution](images/standalone-kubernetes.png)
+
 ## Deployment Modes - Kubernetes
 
 Contrail provides more than one way of providing networking to a K8s cluster.
