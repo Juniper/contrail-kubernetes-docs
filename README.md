@@ -12,6 +12,6 @@ Currently K8s provides a flat networking model wherein all pods can talk to each
 
 Contrail provides more than one way of providing networking to a K8s cluster.
 
-### [Standalone Kubernetes]()
+### [Standalone Kubernetes](install/kubernetes/standalone-kubernete-ansible.md)
 ### [Nested Kubernetes](install/kubernetes/nested-kubernetes.md)
 ### [Non-Nested Kubernetes](install/kubernetes/non-nested-kubernetes.md)
