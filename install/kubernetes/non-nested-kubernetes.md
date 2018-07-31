@@ -1,5 +1,7 @@
 In Non-nested mode Kubernetes cluster is provisioned side by side with Openstack cluster with networking provided by same Contrail controller.
 
+![Contrail Non-Nested Solution](/images/non-nested-kubernetes.png)
+
 # __Prerequisites__
 
 1. Installed and running Contrail Openstack cluster on either Bare Metal server (or Virtual Machine).
