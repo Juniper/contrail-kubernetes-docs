@@ -3,17 +3,9 @@ Contrail CNI can be installed on a Kubernetes cluster through multiple provision
 This wiki will describe the most simplest of all: **A single yaml based install**
 
 # Pre-requisites
-1. **A running Kubernetes cluster**
+**A running Kubernetes cluster**
 
-   There are multiple options available to user to install Kubernetes. The most simplest being [kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/)
-
-   Alternatively if you would like to install Contrail and K8s cluster together, you can use [Contrail Ansible Deployer](https://github.com/Juniper/contrail-ansible-deployer/wiki/Contrail-microservice-installation-with-kubernetes).
-
-2. **Linux kernel version 3.10.0-862.3.2**
-
-   Contrail forwarding uses a kernel module to provide high throughput, low latency networking.
-
-   The latest kernel module is compiled against 3.10.0-862.3.2 kernel.
+[Install Guide](/install/kubernetes/install-kubernetes.md)
 
 # Installation
   Installation of Contrail is a **1**-step process.
