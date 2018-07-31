@@ -4,6 +4,8 @@ The following steps will install a standalone Kubernetes cluster with Contrail a
 
 Provisioning of K8s and Contrail is done through Ansible-playbooks.
 
+![Contrail Standalone Solution](/images/standalone-kubernetes.png)
+
 ### Step 1. Re-image the node to CentOS 7.4.
 
 **Linux kernel version 3.10.0-862.3.2**
