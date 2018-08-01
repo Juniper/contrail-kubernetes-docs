@@ -1,6 +1,7 @@
 
 # Disclaimer
 
+
 ***This guide is meant to be a helpful reference to install Kubernetes. It is NOT intended to be an authoritative guide for Kubernetes install. It is merely steps that we use everyday and happens to work for us.***
 
 Please refer to canonical documentation from Kubernetes community  [here](https://kubernetes.io/docs/setup/)
