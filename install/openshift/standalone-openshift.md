@@ -122,7 +122,7 @@ openshift_enable_service_catalog=false
 openshift_use_openshift_sdn=false
 os_sdn_network_plugin_name='cni'
 openshift_disable_check=memory_availability,package_availability,disk_availability,package_version,docker_storage
-openshift_docker_insecure_registries=ci-repo.englab.juniper.net:5000
+openshift_docker_insecure_registries=ci-repo.englab.juniper.net:5010
 
 openshift_use_contrail=true
 contrail_version=5.0
@@ -131,30 +131,13 @@ contrail_registry=ci-repo.englab.juniper.net:5000
 # Username /Password for private Docker regiteries
 #contrail_registry_username=test
 #contrail_registry_password=test
+# Below option presides over contrail masters if set
 #vrouter_physical_interface=ens160
 contrail_vip=10.87.65.48
 vrouter_gateway=10.84.13.254
 #docker_version=1.13.1
 
-[masters]
-10.84.13.51 openshift_hostname=a6s41node1
-
-[etcd]
-10.84.13.51 openshift_hostname=a6s41node1
-
-[nodes]
-10.84.13.51 openshift_hostname=a6s41node1
-10.84.13.52 openshift_hostname=a6s41node2
-
-[openshift_ca]
-10.84.13.51 openshift_hostname=a6s41node1
-
-# Contrail master on different subnet, if vrouter interface is provided it takes precedence
-[contrail_masters]
-20.1.1.1 openshift_hostname=a6s41node1
-
 # Contrail vars with default values
-[contrail_vars]
 #kubernetes_api_server=10.84.13.51
 #kubernetes_api_port=8080
 #kubernetes_api_secure_port=8443
@@ -169,4 +152,21 @@ vrouter_gateway=10.84.13.254
 #public_fip_pool={}
 #vnc_endpoint_ip=20.1.1.1
 #vnc_endpoint_port=8082
+
+[masters]
+10.84.13.51 openshift_hostname=a6s41node1
+
+[etcd]
+10.84.13.51 openshift_hostname=a6s41node1
+
+[nodes]
+10.84.13.51 openshift_hostname=a6s41node1
+10.84.13.52 openshift_hostname=a6s41node2
+
+[openshift_ca]
+10.84.13.51 openshift_hostname=a6s41node1
+
+[contrail_masters]
+20.1.1.1 openshift_hostname=a6s41node1
+
 ```
