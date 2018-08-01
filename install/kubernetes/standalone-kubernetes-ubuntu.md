@@ -3,10 +3,23 @@ Contrail CNI can be installed on a Kubernetes cluster through multiple provision
 This wiki will describe the most simplest of all: **A single yaml based install**
 
 # Pre-requisites
-**A running Kubernetes cluster**
+1. **A running Kubernetes cluster**
 
 [Install Guide](/install/kubernetes/install-kubernetes.md)
 
+2. Add Contrail repository as insecure repository in docker.
+   *** NOTE: This will need to be done on all nodes of your Kubernetes cluster ***
+```
+Step a:
+cat <<EOF >>/etc/docker/daemon.json
+{
+"insecure-registries": ["ci-repo.englab.juniper.net:5010"]
+}
+EOF
+
+Step b:
+service docker restart
+```
 # Installation
   Installation of Contrail is a **1**-step process.
 
