@@ -128,7 +128,7 @@ systemctl stop firewalld; systemctl disable firewalld
   ```
   4. Install Kubernetes components
   ```
-  sudo apt-get install -y kubectl kubelet kubeadm
+  sudo apt-get install -y kubelet kubeadm
   ```
   5. Disable firewalld
   ```
