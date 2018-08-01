@@ -55,12 +55,11 @@ instances:
      vrouter:        # Optional.
      k8s_node:       # Optional.
    ip: BMS2_IP
- contrail_configuration: 
-   CONTRAIL_VERSION: release-tag 
- global_configuration: 
-   CONTAINER_REGISTRY: hub.juniper.net/contrail 
-   CONTAINER_REGISTRY_USERNAME: username 
-   CONTAINER_REGISTRY_PASSWORD: password
+contrail_configuration:
+   CONTRAIL_VERSION: latest
+global_configuration:
+   CONTAINER_REGISTRY: ci-repo.englab.juniper.net:5010
+   REGISTRY_PRIVATE_INSECURE: True
 ```
 
 ### Step 5.	Turn off the swap functionality on all the nodes.
