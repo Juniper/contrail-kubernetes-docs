@@ -4,7 +4,7 @@ The following steps will install a standalone openshift cluster with Contrail as
 
 Provisioning of Openshift and Contrail is done through Ansible-playbooks.
 
-![Contrail Standalone Solution](/images/standalone-openshift.png)
+![Contrail Standalone Solution](/images/standalone-openshift-3.7.png)
 
 ### Reimage all your servers with : 
 
@@ -135,7 +135,7 @@ openshift_docker_insecure_registries=ci-repo.englab.juniper.net:5010
 openshift_use_contrail=true
 contrail_version=5.0
 contrail_container_tag=ocata-5.0-156
-contrail_registry=ci-repo.englab.juniper.net:5000
+contrail_registry=ci-repo.englab.juniper.net:5010
 # Username /Password for private Docker regiteries
 #contrail_registry_username=test
 #contrail_registry_password=test
@@ -162,19 +162,19 @@ vrouter_gateway=10.84.13.254
 #vnc_endpoint_port=8082
 
 [masters]
-10.84.13.51 openshift_hostname=a6s41node1
+10.84.13.51 openshift_hostname=openshift-master
 
 [etcd]
-10.84.13.51 openshift_hostname=a6s41node1
+10.84.13.51 openshift_hostname=openshift-master
 
 [nodes]
-10.84.13.51 openshift_hostname=a6s41node1
-10.84.13.52 openshift_hostname=a6s41node2
+10.84.13.51 openshift_hostname=openshift-master
+10.84.13.52 openshift_hostname=openshift-slave
 
 [openshift_ca]
-10.84.13.51 openshift_hostname=a6s41node1
+10.84.13.51 openshift_hostname=openshift-master
 
 [contrail_masters]
-20.1.1.1 openshift_hostname=a6s41node1
+20.1.1.1 openshift_hostname=openshift-master
 
 ```
