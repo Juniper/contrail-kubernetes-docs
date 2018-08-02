@@ -13,7 +13,7 @@ Currently K8s provides a flat networking model wherein all pods can talk to each
 ***Disclaimer: 
 The one-step install is for those who are waiting with bated breath to get their hands on a Contrail
 Kubernetes cluster. This is meant as a quickstart install and is not as fequently validated to work
-as the [standard mode](#installation:-standard-and-recommended) of install. Though functionally identical to standard install, we dont recommend
+as the [standard mode](https://github.com/Juniper/contrail-kubernetes-docs/blob/master/README.md#installation-standard-and-recommended) of install. Though functionally identical to standard install, we dont recommend
 this for anything other than quick tryouts.***
 
 ### [1-Step Standalone Kubernetes - Ubuntu](install/kubernetes/standalone-kubernetes-ubuntu.md)
