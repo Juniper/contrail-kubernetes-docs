@@ -1,3 +1,11 @@
+# Provisioning of Openshift cluster using openshift-ansible deployer
+
+The following steps will install a standalone openshift cluster with Contrail as networking provider.
+
+Provisioning of Openshift and Contrail is done through Ansible-playbooks.
+
+![Contrail Standalone Solution](/images/standalone-openshift.png)
+
 ### Reimage all your servers with : 
 
 ```shell
