@@ -1,4 +1,4 @@
-# Provisioning of Openshift cluster using openshift-ansible deployer
+# Provisioning of Openshift cluster using openshift-ansible deployer 3.7
 
 The following steps will install a standalone openshift cluster with Contrail as networking provider.
 
