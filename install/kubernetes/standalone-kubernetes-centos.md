@@ -1,5 +1,7 @@
 Contrail CNI can be installed on a Kubernetes cluster through multiple provisioning schemes.
 
+![Contrail Standalone Solution](/images/standalone-kubernetes.png)
+
 This wiki will describe the most simplest of all: **A single yaml based install**
 
 # Pre-requisites
