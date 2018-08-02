@@ -8,6 +8,19 @@ Currently K8s provides a flat networking model wherein all pods can talk to each
 
 ![Contrail Solution](images/standalone-kubernetes.png)
 
+# Installation - Quick and Simple
+
+***Disclaimer: 
+The one-step install is for those who are waiting with bated breath to get their hands on a Contrail
+Kubernetes cluster. This is meant as a quickstart install and is not as fequently validated to work
+as the standard mode of install. Though functionally identical to standard install, we dont recommend
+this for anything other than quick tryouts.***
+
+### [1-Step Standalone Kubernetes - Ubuntu](install/kubernetes/standalone-kubernetes-ubuntu.md)
+### [1-Step Standalone Kubernetes - Centos](/install/kubernetes/standalone-kubernetes-centos.md)
+
+# Installation - Standard and Recommended
+
 ## Deployment Modes - Kubernetes
 
 Contrail provides more than one way of providing networking to a K8s cluster.
