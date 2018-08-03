@@ -102,7 +102,7 @@ rerun :
 ansible-playbook -i inventory/byo/ose-install playbooks/byo/config.yml
 
 ```
-2. If you see docker image pull errors
+2. If you see docker image pull errors, do following on all nodes
 
 ```shell
 vi /etc/docker/daemon.json
