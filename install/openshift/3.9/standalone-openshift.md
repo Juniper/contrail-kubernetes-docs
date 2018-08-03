@@ -1,5 +1,5 @@
 
-# Provisioning of Openshift cluster using openshift-ansible deployer 3.7
+# Provisioning of Openshift cluster using openshift-ansible deployer 3.9
 
 The following steps will install a standalone openshift cluster with Contrail as networking provider.
 
@@ -22,14 +22,16 @@ yum install vim git wget -y && wget -O /tmp/epel-release-latest-7.noarch.rpm htt
 ### Clone ansible repo (ansible node): 
 
 ```shell
-git clone https://github.com/Juniper/openshift-ansible.git -b release-3.7-contrail
+git clone https://github.com/Juniper/openshift-ansible.git -b release-3.9-contrail
 ```
 
 ### For this setup am assuming one master one slave
 
 master : server1 (10.84.11.11)
 
-slave : server2 (10.84.11.22)
+infra : server2 (10.84.11.22)
+
+compute : server3 (10.84.11.33)
 
 ### Edit /etc/hosts to have all machines entry for eg(all nodes):
 
@@ -40,8 +42,10 @@ slave : server2 (10.84.11.22)
 10.84.5.100 puppet
 10.84.11.11 server1.contrail.juniper.net server1
 10.84.11.22 server2.contrail.juniper.net server2
+10.84.11.33 server3.contrail.juniper.net server3
 20.1.1.1    server1.contrail.juniper.net server1
 20.1.1.2    server2.contrail.juniper.net server2
+20.1.1.3    server3.contrail.juniper.net server3
 ```
 
 ### Setup passless ssh to ansible node itself and all nodes:
@@ -50,18 +54,17 @@ slave : server2 (10.84.11.22)
 ssh-keygen -t rsa
 ssh-copy-id root@10.84.11.11
 ssh-copy-id root@10.84.11.22
+ssh-copy-id root@10.84.11.33
 ```
 
 ### Run ansible playbook:
 Before running make sure that you have edited inventory/byo/ose-install file as shown below
 
 ```shell 
-ansible-playbook -i inventory/byo/ose-install inventory/byo/ose-prerequisites.yml
-ansible-playbook -i inventory/byo/ose-install playbooks/byo/openshift_facts.yml
-ansible-playbook -i inventory/byo/ose-install playbooks/byo/config.yml
+ansible-playbook -i inventory/ose-install inventory/ose-prerequisites.yml
+ansible-playbook -i inventory/ose-install playbooks/prerequisites.yml
+ansible-playbook -i inventory/ose-install playbooks/config.yml
 ```
-
-
 
 ### Note (temporary fixes):
 
@@ -115,8 +118,7 @@ ansible_ssh_user=root
 ansible_become=yes
 debug_level=2
 deployment_type=origin
-openshift_release=v3.7
-openshift_pkg_version=-3.7.1-2.el7
+openshift_release=v3.9
 #openshift_repos_enable_testing=true
 containerized=false
 openshift_install_examples=true
@@ -142,15 +144,15 @@ contrail_registry=ci-repo.englab.juniper.net:5010
 #contrail_registry_password=test
 # Below option presides over contrail masters if set
 #vrouter_physical_interface=ens160
-contrail_vip=10.87.65.48
-vrouter_gateway=10.84.13.254
+contrail_vip=10.84.13.52
+vrouter_gateway=10.87.65.126
 #docker_version=1.13.1
 
-# Contrail vars with default values
-#kubernetes_api_server=10.84.13.51
+# Contrail_vars
+#kubernetes_api_server=10.84.13.52
 #kubernetes_api_port=8080
 #kubernetes_api_secure_port=8443
-#cluster_name=k8s
+cluster_name=myk8s
 #cluster_project={}
 #cluster_network={}
 #pod_subnets=10.32.0.0/12
@@ -163,19 +165,19 @@ vrouter_gateway=10.84.13.254
 #vnc_endpoint_port=8082
 
 [masters]
-10.84.13.51 openshift_hostname=openshift-master
+10.84.13.52 openshift_hostname=openshift-master
 
 [etcd]
-10.84.13.51 openshift_hostname=openshift-master
+10.84.13.52 openshift_hostname=openshift-master
 
 [nodes]
-10.84.13.51 openshift_hostname=openshift-master
-10.84.13.52 openshift_hostname=openshift-slave
+10.84.13.52 openshift_hostname=openshift-master
+10.84.13.53 openshift_hostname=openshift-compute
+10.84.13.54 openshift_hostname=openshift-infra openshift_node_labels="{'region': 'infra'}"
 
 [openshift_ca]
-10.84.13.51 openshift_hostname=openshift-master
+10.84.13.52 openshift_hostname=openshift-master
 
 [contrail_masters]
 20.1.1.1 openshift_hostname=openshift-master
-
 ```
