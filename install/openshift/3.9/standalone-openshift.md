@@ -133,12 +133,12 @@ openshift_enable_service_catalog=false
 openshift_use_openshift_sdn=false
 os_sdn_network_plugin_name='cni'
 openshift_disable_check=memory_availability,package_availability,disk_availability,package_version,docker_storage
-openshift_docker_insecure_registries=ci-repo.englab.juniper.net:5010
+openshift_docker_insecure_registries=ci-repo.englab.juniper.net:5000
 
 openshift_use_contrail=true
 contrail_version=5.0
 contrail_container_tag=ocata-5.0-156
-contrail_registry=ci-repo.englab.juniper.net:5010
+contrail_registry=ci-repo.englab.juniper.net:5000
 # Username /Password for private Docker regiteries
 #contrail_registry_username=test
 #contrail_registry_password=test
