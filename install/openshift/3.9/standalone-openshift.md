@@ -68,7 +68,7 @@ ansible-playbook -i inventory/ose-install playbooks/config.yml
 
 ### Note (temporary fixes):
 
-If you see any of below couple of different TASK errors :
+1. If you see any of below couple of different TASK errors :
 
 ```shell 
 TASK [contrail_node : Label master nodes with opencontrail.org/controller=true] ******************************************************************************************************
@@ -102,7 +102,14 @@ rerun :
 ansible-playbook -i inventory/byo/ose-install playbooks/byo/config.yml
 
 ```
+2. If you see docker image pull errors
 
+```shell
+vi /etc/docker/daemon.json
+{
+  "insecure_registries" : ["ci-repo.englab.juniper.net:5000"]
+}
+```
 
 ### Sample ose-install file:
 
