@@ -39,15 +39,36 @@ Please ensure that the following prerequisites are met, for a successful provisi
   
   Provisioning a Nested Kubernetes Cluster is a three step process:
 
-  ***1. Create link-local services in the Contrail-Openstack cluster.***
+  ***1. Configure network connectivity to Contrail Config/Data plane functions.***
 
   ***2. Generate single yaml file to create Contrail-k8s cluster.***
 
   ***3. Instantiate Contrail-k8s cluster.***
 
-## Create link-local services
+## Configure network connectivity to Contrail Config/Data plane functions
 
-A nested kubernetes cluster is managed by the same contrail control processes that manage the underlying openstack cluster. Towards this goal, the nested kubernetes cluster needs ip reachability to the contrail control processes. Since the kubernetes cluster is actually an overlay on the openstack cluster, we use Link Local Service feature or a combination of Link Local + Fabric SNAT feature of Contrail to provide IP reachability to/from the overly kubernetes cluster and openstack cluster. 
+Kube-manager is essentially a part of Contrail config function. In a nested deployement, one kube-manager instance will be
+provisioned in each overlay cluster. This necessitates the need for kube-manager running in overlay to have network reachability to Contrail Config functions of the underlay Openstack cluster.
+
+Network connectivity for the following Contrail Config functions are required:
+
+|  |
+| --- |
+| Contrail Config     |
+| Contrail Analytics  |
+| Contrail Msg Queue  |
+| Contrail VNC DB     |
+| Keystone            |
+
+In addition to Config connectivity, CNI for the Kubernetes cluster needs network reachability to the Vrouter of its Compute node.
+
+Network connectivity for the following Data plane function is required:
+
+|  |
+| --- |
+| Vrouter   |
+
+We can use Link Local Service feature or a combination of Link Local + Fabric SNAT feature of Contrail to provide IP reachability to/from the overlay kubernetes cluster config/data compoenents and to corresponding config/data compoenents of the underlay openstack cluster.
 
 ### Option 1: Fabric SNAT + Link Local (Preferred)
 
