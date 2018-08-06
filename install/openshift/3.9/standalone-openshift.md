@@ -17,6 +17,8 @@ Provisioning of Openshift and Contrail is done through Ansible-playbooks.
 
 ```shell
 yum install vim git wget -y && wget -O /tmp/epel-release-latest-7.noarch.rpm https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && rpm -ivh /tmp/epel-release-latest-7.noarch.rpm && yum update -y && yum install python-pip -y && pip install ansible==2.5.2
+
+Run yum install -y centos-release-openshift-origin (if its openshift-origin)
 ```
 
 ### Clone ansible repo (ansible node): 
@@ -62,8 +64,7 @@ Before running make sure that you have edited inventory/byo/ose-install file as 
 
 ```shell 
 ansible-playbook -i inventory/ose-install inventory/ose-prerequisites.yml
-ansible-playbook -i inventory/ose-install playbooks/prerequisites.yml
-ansible-playbook -i inventory/ose-install playbooks/config.yml
+ansible-playbook -i inventory/ose-install playbooks/deploy_cluster.yml
 ```
 
 ### Note (temporary fixes):
