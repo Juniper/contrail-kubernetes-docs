@@ -189,3 +189,6 @@ cluster_name=myk8s
 [contrail_masters]
 20.1.1.1 openshift_hostname=openshift-master
 ```
+
+### Note:
+* dnsmasq on master needs to be restarted after installation if dns is not working as expected.
