@@ -12,18 +12,7 @@ Please ensure that the following prerequisites are met, for a successful provisi
 2. Installed and running Kubernetes cluster on Virtual Machines created on Contrail Openstack cluster.
    User is free to follow any installation method of their choice. 
 
-   2.a. The Kubernetes cluster should consist of a Kubernetes master node and atleast one Kubernetes worker node. We do not support a tainted Kubernetes master i.e a mode where worker pods can be scheduled on kubernetes master node.
-
-   2.b. Kubelet running on the Kubernetes master should NOT be configured with network plugin.
-      Ensure that Kubelet running on the kubernetes master node is not run with network plugin options. If kubelet is running with network plugin option, then:
-```
-       Disable/comment out the KUBELET_NETWORK_ARGS option in the configuration file:
-       /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-
-       Restart kubelet service:
-       systemctl daemon-reload; systemctl restart kubelet.service    
-```
-  2.c. Update /etc/hosts file on your kubernetes master node with entries for each node of your cluster.
+  2.a. Update /etc/hosts file on your kubernetes master node with entries for each node of your cluster.
 ```
       Example: 
           If you kubernetes cluster is made up of three nodes:
