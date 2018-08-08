@@ -8,7 +8,7 @@
 ```
 
 * Setup environment(all nodes):
-  *Register all nodes in cluster using Red Hat Subscription Manager (RHSM)
+     * Register all nodes in cluster using Red Hat Subscription Manager (RHSM)
  ```shell
  (all-nodes)# subscription-manager register --username <username> --password <password> --force
  ```
