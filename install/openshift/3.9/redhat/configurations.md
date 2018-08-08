@@ -12,19 +12,19 @@
  ```shell
  (all-nodes)# subscription-manager register --username <username> --password <password> --force
  ```
-     * List the available subscriptions
+   * List the available subscriptions
  ```shell
  (all-nodes)# subscription-manager list --available --matches '*OpenShift*'
  ```
-    * From the previous command, find the pool ID for OpenShift Container Platform subscription & attach it
+   * From the previous command, find the pool ID for OpenShift Container Platform subscription & attach it
  ```shell
  (all-nodes)# subscription-manager attach --pool=<pool-ID>
  ```
-    * Disable all yum respositories
+   * Disable all yum respositories
  ```shell
  (all-nodes)# subscription-manager repos --disable="*"
  ```
-    * Enable only the repositories required by OpenShift Container Platform 3.9
+   * Enable only the repositories required by OpenShift Container Platform 3.9
  ```shell
   subscription-manager repos \
     --enable="rhel-7-server-rpms" \
