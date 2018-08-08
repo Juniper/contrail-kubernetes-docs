@@ -31,4 +31,5 @@ Contrail provides more than one way of providing networking to a K8s cluster.
 
 ## Deployment Modes - Openshift
 
-### [Standalone Openshift 3.7/3.9](install/openshift/)
+### [Standalone Openshift 3.9](install/openshift/3.9/standalone-openshift.md)
+### [Standalone Openshift 3.7](install/openshift/3.7/standalone-openshift.md)
