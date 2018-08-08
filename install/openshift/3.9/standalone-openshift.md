@@ -64,6 +64,7 @@ Before running make sure that you have edited inventory/byo/ose-install file as 
 
 ```shell 
 ansible-playbook -i inventory/ose-install inventory/ose-prerequisites.yml
+ansible-playbook -i inventory/ose-install playbooks/prerequisites.yml
 ansible-playbook -i inventory/ose-install playbooks/deploy_cluster.yml
 ```
 
@@ -144,6 +145,7 @@ openshift_disable_check=memory_availability,package_availability,disk_availabili
 openshift_docker_insecure_registries=ci-repo.englab.juniper.net:5000
 
 openshift_use_contrail=true
+nested_mode_contrail=false
 contrail_version=5.0
 contrail_container_tag=ocata-5.0-156
 contrail_registry=ci-repo.englab.juniper.net:5000
