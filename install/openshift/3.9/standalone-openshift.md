@@ -9,28 +9,15 @@ Required topology is as shown below.
 ![Contrail Standalone Solution](/images/standalone-openshift-3.9.png)
 
 ### Steps :
-* Reimage all your servers with : 
-
-  * For centOS (origin installations)
-```shell
-/cs-shared/server-manager/client/server-manager reimage --server_id server1 centos-7.5
-```
-  * For Redhat (openshift-enterprise installations)
-```shell
-/cs-shared/server-manager/client/server-manager reimage --server_id server1 Redhat-7.5-minimal
-```
 
 * Setup environment(all nodes):
   
   * For centOS (origin installations)
-```shell
-yum install vim git wget -y && wget -O /tmp/epel-release-latest-7.noarch.rpm https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && rpm -ivh /tmp/epel-release-latest-7.noarch.rpm && yum update -y && yum install python-pip -y && pip install ansible==2.5.2
-
-Run yum install -y centos-release-openshift-origin (if its openshift-origin)
-```
-
+  **https://github.com/Juniper/contrail-kubernetes-docs/blob/master/install/openshift/3.9/centos/configurations.md
+  
   * For Redhat (openshift-enterprise installations)
-
+  **https://github.com/Juniper/contrail-kubernetes-docs/blob/master/install/openshift/3.9/redhat/configurations.md
+  
 * Clone ansible repo (ansible node): 
 
 ```shell
@@ -38,12 +25,13 @@ git clone https://github.com/Juniper/openshift-ansible.git -b release-3.9-contra
 ```
 
 * For this setup am assuming one master one infra and one compute
-
+```shell
 master : server1 (10.84.11.11)
 
 infra : server2 (10.84.11.22)
 
 compute : server3 (10.84.11.33)
+```
 
 * Edit /etc/hosts to have all machines entry for eg(all nodes):
 
@@ -136,7 +124,7 @@ openshift_ca
 ansible_ssh_user=root
 ansible_become=yes
 debug_level=2
-deployment_type=origin
+deployment_type=origin #openshift-enterprise for Redhat
 openshift_release=v3.9
 #openshift_repos_enable_testing=true
 containerized=false
