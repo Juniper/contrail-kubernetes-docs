@@ -9,13 +9,13 @@
 
 * Setup environment(all nodes):
      * Register all nodes in cluster using Red Hat Subscription Manager (RHSM)
- ```shell
- (all-nodes)# subscription-manager register --username <username> --password <password> --force
- ```
-   * List the available subscriptions
- ```shell
- (all-nodes)# subscription-manager list --available --matches '*OpenShift*'
- ```
+        ```shell
+        (all-nodes)# subscription-manager register --username <username> --password <password> --force
+        ```
+     * List the available subscriptions
+        ```shell
+        (all-nodes)# subscription-manager list --available --matches '*OpenShift*'
+        ```
    * From the previous command, find the pool ID for OpenShift Container Platform subscription & attach it
  ```shell
  (all-nodes)# subscription-manager attach --pool=<pool-ID>
