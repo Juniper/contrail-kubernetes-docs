@@ -12,9 +12,9 @@ Required topology is as shown below.
 
 * Setup environment(all nodes):
   
-  * For centOS (origin installations) : [centos node bring up](/install/openshift/3.9/centOS/configurations.md)
+  * For centOS (origin installations) : [centos](/install/openshift/3.9/centos/configurations.md)
   
-  * For Redhat (openshift-enterprise installations) : https://github.com/Juniper/contrail-kubernetes-docs/blob/master/install/openshift/3.9/redhat/configurations.md
+  * For Redhat (openshift-enterprise installations) : [Redhat](/install/openshift/3.9/redhat/configurations.md)
   
 * Clone ansible repo (ansible node): 
 
