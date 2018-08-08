@@ -4,16 +4,18 @@
 The following steps will install a standalone openshift cluster with Contrail as networking provider.
 
 Provisioning of Openshift and Contrail is done through Ansible-playbooks.
+Required topology is as shown below.
 
 ![Contrail Standalone Solution](/images/standalone-openshift-3.9.png)
 
-### Reimage all your servers with : 
+### Steps :
+* Reimage all your servers with : 
 
 ```shell
 /cs-shared/server-manager/client/server-manager reimage --server_id server1 centos-7.4
 ```
 
-### Setup environment(all nodes):
+* Setup environment(all nodes):
 
 ```shell
 yum install vim git wget -y && wget -O /tmp/epel-release-latest-7.noarch.rpm https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && rpm -ivh /tmp/epel-release-latest-7.noarch.rpm && yum update -y && yum install python-pip -y && pip install ansible==2.5.2
@@ -21,13 +23,13 @@ yum install vim git wget -y && wget -O /tmp/epel-release-latest-7.noarch.rpm htt
 Run yum install -y centos-release-openshift-origin (if its openshift-origin)
 ```
 
-### Clone ansible repo (ansible node): 
+* Clone ansible repo (ansible node): 
 
 ```shell
 git clone https://github.com/Juniper/openshift-ansible.git -b release-3.9-contrail
 ```
 
-### For this setup am assuming one master one slave
+* For this setup am assuming one master one infra and one compute
 
 master : server1 (10.84.11.11)
 
@@ -35,7 +37,7 @@ infra : server2 (10.84.11.22)
 
 compute : server3 (10.84.11.33)
 
-### Edit /etc/hosts to have all machines entry for eg(all nodes):
+* Edit /etc/hosts to have all machines entry for eg(all nodes):
 
 ```shell
 [root@server1]# cat /etc/hosts
@@ -50,7 +52,7 @@ compute : server3 (10.84.11.33)
 20.1.1.3    server3.contrail.juniper.net server3
 ```
 
-### Setup passless ssh to ansible node itself and all nodes:
+* Setup passless ssh to ansible node itself and all nodes:
 
 ```shell
 ssh-keygen -t rsa
@@ -59,7 +61,7 @@ ssh-copy-id root@10.84.11.22
 ssh-copy-id root@10.84.11.33
 ```
 
-### Run ansible playbook:
+* Run ansible playbook:
 Before running make sure that you have edited inventory/byo/ose-install file as shown below
 
 ```shell 
