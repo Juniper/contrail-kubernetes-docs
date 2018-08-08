@@ -11,17 +11,25 @@ Required topology is as shown below.
 ### Steps :
 * Reimage all your servers with : 
 
+  * For centOS (origin installations)
 ```shell
-/cs-shared/server-manager/client/server-manager reimage --server_id server1 centos-7.4
+/cs-shared/server-manager/client/server-manager reimage --server_id server1 centos-7.5
+```
+  * For Redhat (openshift-enterprise installations)
+```shell
+/cs-shared/server-manager/client/server-manager reimage --server_id server1 Redhat-7.5-minimal
 ```
 
 * Setup environment(all nodes):
-
+  
+  * For centOS (origin installations)
 ```shell
 yum install vim git wget -y && wget -O /tmp/epel-release-latest-7.noarch.rpm https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && rpm -ivh /tmp/epel-release-latest-7.noarch.rpm && yum update -y && yum install python-pip -y && pip install ansible==2.5.2
 
 Run yum install -y centos-release-openshift-origin (if its openshift-origin)
 ```
+
+  * For Redhat (openshift-enterprise installations)
 
 * Clone ansible repo (ansible node): 
 
