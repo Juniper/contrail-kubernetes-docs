@@ -16,6 +16,12 @@ Required topology is as shown below.
   
   * For Redhat (openshift-enterprise installations) : [Redhat](/install/openshift/3.9/redhat/configurations.md)
   
+* Needs supported ansible version
+  
+  ```shell
+  yum install -y python-pip
+  pip install ansible==2.5.2
+  ```
 * Clone ansible repo (ansible node): 
 
 ```shell
