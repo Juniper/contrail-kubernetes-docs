@@ -22,6 +22,15 @@ EOF
 Step b:
 service docker restart
 ```
+
+3. Make sure that kubernetes master node ip has an entry in /etc/hosts file that resolves to
+the hostname.
+```
+File: /etc/hosts
+
+x.x.x.x hostname hostname.fqname
+```
+
 # Installation
   Installation of Contrail is a **1**-step process.
 
