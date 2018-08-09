@@ -9,7 +9,7 @@ In Non-nested mode Kubernetes cluster is provisioned side by side with Openstack
 
 2. Installed and running Kubernetes cluster on same Bare Metal server (or Virtual Machine) as used in step 1.
 
-3. Label the above node (where Contrail controller is running) using following:
+3. Label the Kubernetes master node using following command:
 
 ```
        kubectl label node <node> node-role.opencontrail.org/controller=true
