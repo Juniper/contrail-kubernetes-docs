@@ -65,7 +65,7 @@ ssh-copy-id root@10.84.11.33
 Before running make sure that you have edited inventory/byo/ose-install file as shown below
 
 ```shell 
-ansible-playbook -i inventory/ose-install inventory/ose-prerequisites.yml
+ansible-playbook -i inventory/ose-install inventory/ose-prerequisites.yml ( required only for origin installations )
 ansible-playbook -i inventory/ose-install playbooks/prerequisites.yml
 ansible-playbook -i inventory/ose-install playbooks/deploy_cluster.yml
 ```
