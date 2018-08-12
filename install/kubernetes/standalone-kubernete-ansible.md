@@ -14,7 +14,7 @@ Provisioning of K8s and Contrail is done through Ansible-playbooks.
 
    The latest kernel module is compiled against 3.10.0-862.3.2 kernel.
 
-### Step 2.	Install the necessary tools.
+### Step 2.	Install the necessary utilities.
 ```
 yum -y install epel-release git ansible net-tools
 ```
@@ -67,11 +67,11 @@ global_configuration:
 swapoff -a
 ```
 
-### Step 6.	Configure the provisioned instances.
+### Step 6.	Configure the nodes.
 ```
 ansible-playbook -e orchestrator=kubernetes -i inventory/ playbooks/configure_instances.yml
 ```
-### Step 7.	Install Contrail using the kubernetes Orchestrator.
+### Step 7.	Install Kubernetes and Contrail.
 ```
 ansible-playbook -e orchestrator=kubernetes -i inventory/ playbooks/install_k8s.yml
 ansible-playbook -e orchestrator=kubernetes -i inventory/ playbooks/install_contrail.yml
