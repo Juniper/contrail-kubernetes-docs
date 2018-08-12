@@ -31,12 +31,7 @@ Follow these steps to provision Contrail Kubernetes cluster side
 
 2. Populate common.env file (located in the top directory of the cloned contrail-container-builder repo) with info corresponding to your cluster and environment.
 
-For you reference, please find a sample common.env file with required bare minimum configurations here:
-
-https://github.com/Juniper/contrail-container-builder/blob/master/kubernetes/sample_config_files/common.env.sample.nested_mode
-
-           a. Remove KUBEMANAGER_NESTED_MODE macro when using this sample file as the base.
-           b. Optionally remove AUTH_MODE and subsequent keystone macros if not used.
+For you reference, see a sample common.env file with required bare minimum configurations here:  https://github.com/Juniper/contrail-container-builder/blob/master/kubernetes/sample_config_files/common.env.sample.non_nested_mode
 
 3. Generate the yaml file as following:
 ```
