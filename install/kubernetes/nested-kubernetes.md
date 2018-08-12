@@ -36,8 +36,7 @@ Please ensure that the following prerequisites are met, for a successful provisi
 
 ## Configure network connectivity to Contrail Config/Data plane functions
 
-Kube-manager is essentially a part of Contrail config function. In a nested deployement, one kube-manager instance will be
-provisioned in each overlay cluster. This necessitates the need for kube-manager running in overlay to have network reachability to Contrail Config functions of the underlay Openstack cluster.
+In a nested deployement, one kube-manager instance will be provisioned in each overlay cluster. Kube-manager is essentially a part of Contrail config function. This necessitates the need for kube-manager running in overlay to have network reachability to Contrail Config functions of the underlay Openstack cluster.
 
 Network connectivity for the following Contrail Config functions are required:
 
@@ -49,7 +48,7 @@ Network connectivity for the following Contrail Config functions are required:
 | Contrail VNC DB     |
 | Keystone            |
 
-In addition to Config connectivity, CNI for the Kubernetes cluster needs network reachability to the Vrouter of its Compute node.
+In addition to Config connectivity, CNI for the Kubernetes cluster needs network reachability to the Vrouter Agent of its Compute node.
 
 Network connectivity for the following Data plane function is required:
 
@@ -65,7 +64,7 @@ Step 1: Enable Fabric SNAT on the Virtual Network of the VM's
 
 Fabric SNAT feature should be enabled on the Virtual Network of the Virtual Machine's on which Kubernetes Master and Minions are running.
 
-Step 2: Create one Link Local Service for CNI to communicate with its Vrouter
+Step 2: Create one Link Local Service so CNI to communicate with its Vrouter Agent.
 
 To configure a Link Local Service, we need a Service IP and Fabric IP. Fabric IP is the node IP on which the vrouter agent of the minion is running. Service IP(along with port number) is used by data plane to identify the fabric ip/node. Service IP is required to be a unique and unused IP in the entire openstack cluster. 
 
