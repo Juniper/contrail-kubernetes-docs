@@ -15,15 +15,9 @@ In Non-nested mode Kubernetes cluster is provisioned side by side with Openstack
        kubectl label node <node> node-role.opencontrail.org/controller=true
 ```
 
-4. Kubelet running on the Kubernetes master should NOT be configured with network plugin.
-      Ensure that Kubelet running on the kubernetes master node is not run with network plugin options. If kubelet is running with network plugin option, then:
-```
-       Disable/comment out the KUBELET_NETWORK_ARGS option in the configuration file:
-       /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-
-       Restart kubelet service:
-       systemctl daemon-reload; systemctl restart kubelet.service       
-```
+4. It is recommended that the Kubernetes master should not be configured with network plugin,
+   as it may not be desirable to install vrouter kernel module on the control node.
+   However it is left to the user's preference.
 
 5. Provision additional worker Kubernetes virtual machines (with CentOS 7.5 OS) and join them to the Kubernetes cluster provisioned above.
 
