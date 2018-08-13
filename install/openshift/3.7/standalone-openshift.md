@@ -131,12 +131,12 @@ openshift_enable_service_catalog=false
 openshift_use_openshift_sdn=false
 os_sdn_network_plugin_name='cni'
 openshift_disable_check=memory_availability,package_availability,disk_availability,package_version,docker_storage
-openshift_docker_insecure_registries=<your repo>
+openshift_docker_insecure_registries=opencontrailnightly
 
 openshift_use_contrail=true
 contrail_version=5.0
 contrail_container_tag=ocata-5.0-156
-contrail_registry=<your repo>
+contrail_registry=opencontrailnightly
 # Username /Password for private Docker regiteries
 #contrail_registry_username=test
 #contrail_registry_password=test
