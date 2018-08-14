@@ -33,6 +33,8 @@ Follow these steps to provision Contrail Kubernetes cluster side
 
 For you reference, see a sample common.env file with required bare minimum configurations here:  https://github.com/Juniper/contrail-container-builder/blob/master/kubernetes/sample_config_files/common.env.sample.non_nested_mode
 
+***NOTE: If Contrail Config API is not secured by keystone, please ensure AUTH_MODE and KEYSTONE_* variables are not configured/present while populating configuration in common.env***
+
 3. Generate the yaml file as following:
 ```
        cd <your contrail-container-build-repo>/kubernetes/manifests
