@@ -4,7 +4,7 @@
 * Reimage all your servers with :
 
 ```shell
-/cs-shared/server-manager/client/server-manager reimage --server_id server1 centos-7.5
+/cs-shared/server-manager/client/server-manager reimage --server_id server1 redhat-7.5-minimal
 ```
 
 * Setup environment(all nodes):
