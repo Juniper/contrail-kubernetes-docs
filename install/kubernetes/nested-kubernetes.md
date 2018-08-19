@@ -24,6 +24,21 @@ Please ensure that the following prerequisites are met, for a successful provisi
           y.y.y.y minion1
           z.z.z.z minion2
 ```
+3. If Contrail container images are stored in private/secure docker registry, a kubernetes secret should be created and referenced during creation of single yaml, with credentials of the private docker registry.
+
+```
+   kubectl create secret docker-registry <name> --docker-server=<registry> --docker-username=<username> --docker-password=<password> --docker-email=<email> -n <namespace>
+
+   <name>      - name of the secret
+   <registry>  - example: hub.juniper.net/contrail
+   <username>  - registry user name
+   <password>  - registry passcode
+   <email>     - registered email of this registry account
+   <namespace> - kubernetes namespace where this secret is to be created. 
+                 This should be the namespace where you intend to create Contrail pods.
+
+   ```
+
 # __Provision__
   
   Provisioning a Nested Kubernetes Cluster is a three step process:
@@ -166,6 +181,11 @@ Populate common.env file (located in the top directory of the cloned contrail-co
 For you reference, please find a sample common.env file with required bare minimum configurations here:
 
 https://github.com/Juniper/contrail-container-builder/blob/master/kubernetes/sample_config_files/common.env.sample.nested_mode
+
+**NOTE:
+   If Contrail container images are stored in private/secure docker registry, a kubernetes secret should have be created, as 
+   documented in pre-requesites. Populate the variable KUBERNETES_SECRET_CONTRAIL_REPO=< secret-name > with the name of the 
+   generated secret,in common.env file.**
 
 Step 3:
 
