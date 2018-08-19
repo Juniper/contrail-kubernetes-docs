@@ -21,6 +21,34 @@ In Non-nested mode Kubernetes cluster is provisioned side by side with Openstack
 
 5. Provision additional worker Kubernetes virtual machines (with CentOS 7.5 OS) and join them to the Kubernetes cluster provisioned above.
 
+6. If Contrail container images are stored in private/secure docker registry, a kubernetes secret should be created and referenced during creation of single yaml.
+
+   Step 1. In your Kubernetes cluster, create a kubernetes secret with credentials of the private docker registry.
+
+```
+   kubectl create secret docker-registry <name> --docker-server=<registry> --docker-username=<username> --docker-password=<password> --docker-email=<email> -n <namespace>
+
+   <name>      - name of the secret
+   <registry>  - example: hub.juniper.net/contrail
+   <username>  - registry user name
+   <password>  - registry passcode
+   <email>     - registered email of this registry account
+   <namespace> - kubernetes namespace where this secret is to be created. This should be the namespace where you intend to create pods.
+
+   ```
+
+   Step 2. Generate single yaml file after setting variable KUBERNETES_SECRET_CONTRAIL_REPO=<secret-name> in common.env file
+
+```
+   File: $SBOX/common.env
+
+   ...
+   KUBERNETES_SECRET_CONTRAIL_REPO=<secret-name>
+   ...
+
+   <secret-name>  - Name of the secret created in Step 1.
+   ```
+
 # __Provision__
 Follow these steps to provision Contrail Kubernetes cluster side   
 
