@@ -21,9 +21,7 @@ In Non-nested mode Kubernetes cluster is provisioned side by side with Openstack
 
 5. Provision additional worker Kubernetes virtual machines (with CentOS 7.5 OS) and join them to the Kubernetes cluster provisioned above.
 
-6. If Contrail container images are stored in private/secure docker registry, a kubernetes secret should be created and referenced during creation of single yaml.
-
-   6.1. In your Kubernetes cluster, create a kubernetes secret with credentials of the private docker registry.
+6. If Contrail container images are stored in private/secure docker registry, a kubernetes secret should be created and referenced during creation of single yaml, with credentials of the private docker registry.
 
 ```
    kubectl create secret docker-registry <name> --docker-server=<registry> --docker-username=<username> --docker-password=<password> --docker-email=<email> -n <namespace>
@@ -33,21 +31,11 @@ In Non-nested mode Kubernetes cluster is provisioned side by side with Openstack
    <username>  - registry user name
    <password>  - registry passcode
    <email>     - registered email of this registry account
-   <namespace> - kubernetes namespace where this secret is to be created. This should be the namespace where you intend to create pods.
+   <namespace> - kubernetes namespace where this secret is to be created. 
+                 This should be the namespace where you intend to create Contrail pods.
 
    ```
-   6.2. Generate single yaml file after setting variable KUBERNETES_SECRET_CONTRAIL_REPO=<secret-name> in common.env file
-
-```
-   File: $SBOX/common.env
-
-   ...
-   KUBERNETES_SECRET_CONTRAIL_REPO=<secret-name>
-   ...
-
-   <secret-name>  - Name of the secret created in Step 1.
-   ```
-
+ 
 # __Provision__
 Follow these steps to provision Contrail Kubernetes cluster side   
 
@@ -60,7 +48,12 @@ Follow these steps to provision Contrail Kubernetes cluster side
 
 For you reference, see a sample common.env file with required bare minimum configurations here:  https://github.com/Juniper/contrail-container-builder/blob/master/kubernetes/sample_config_files/common.env.sample.non_nested_mode
 
-***NOTE: If Contrail Config API is not secured by keystone, please ensure AUTH_MODE and KEYSTONE_* variables are not configured/present while populating configuration in common.env***
+***NOTE 1: If Contrail Config API is not secured by keystone, please ensure AUTH_MODE and KEYSTONE_* variables are not configured/present while populating configuration in common.env**
+
+**NOTE 2:
+   If Contrail container images are stored in private/secure docker registry, a kubernetes secret should have be created, as 
+   documented in pre-requesites. Populate the variable KUBERNETES_SECRET_CONTRAIL_REPO=< secret-name > with the name of the 
+   generated secret,in common.env file.**
 
 3. Generate the yaml file as following:
 ```
@@ -68,6 +61,7 @@ For you reference, see a sample common.env file with required bare minimum confi
 
        ./resolve-manifest.sh contrail-non-nested-kubernetes.yaml  > non-nested-contrail.yml
 ```
+
 4. If any of the macros are not specified in common.env, they will have empty string assignments in the "env" ConfigMap in the generated yaml. Make sure such empty macros are removed from the yaml.
    
 5. Copy over the file generated from Step 3 to the master node in your Kubernetes cluster.
