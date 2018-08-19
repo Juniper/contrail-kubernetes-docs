@@ -23,7 +23,7 @@ In Non-nested mode Kubernetes cluster is provisioned side by side with Openstack
 
 6. If Contrail container images are stored in private/secure docker registry, a kubernetes secret should be created and referenced during creation of single yaml.
 
-   Step 1. In your Kubernetes cluster, create a kubernetes secret with credentials of the private docker registry.
+   6.1. In your Kubernetes cluster, create a kubernetes secret with credentials of the private docker registry.
 
 ```
    kubectl create secret docker-registry <name> --docker-server=<registry> --docker-username=<username> --docker-password=<password> --docker-email=<email> -n <namespace>
@@ -36,8 +36,7 @@ In Non-nested mode Kubernetes cluster is provisioned side by side with Openstack
    <namespace> - kubernetes namespace where this secret is to be created. This should be the namespace where you intend to create pods.
 
    ```
-
-   Step 2. Generate single yaml file after setting variable KUBERNETES_SECRET_CONTRAIL_REPO=<secret-name> in common.env file
+   6.2. Generate single yaml file after setting variable KUBERNETES_SECRET_CONTRAIL_REPO=<secret-name> in common.env file
 
 ```
    File: $SBOX/common.env
