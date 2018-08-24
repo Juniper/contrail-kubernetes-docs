@@ -243,6 +243,17 @@ Restart master service.
 systemctl restart atomic-openshift-master-api
 ```
 
+Create a password for admin user to login to the UI
+```
+(master-node)# htpasswd /etc/origin/master/htpasswd admin
+```
+
+Assign cluster-admin role to admin user
+```
+(master-node)# oadm policy add-cluster-role-to-user cluster-admin admin
+(master-node)# oc login -u admin
+```
+
 ### Firewall rule for NodePort
 Due to the issue [https://github.com/kubernetes/kubernetes/issues/39823](https://github.com/kubernetes/kubernetes/issues/39823), which is fixed by the pull [https://github.com/kubernetes/kubernetes/pull/52569](https://github.com/kubernetes/kubernetes/pull/52569), the quick workaround is to add a rule on all nodes.
 ```
