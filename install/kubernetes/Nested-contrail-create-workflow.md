@@ -24,8 +24,12 @@
        Sample large flavor: VCPU: 4, RAM: 4096 MB, Root Disk: 75 GB
     
 3. Create a Host Aggregate and Availability Zone to use on Openstack GUI.
+
     a. On the Openstack UI:  ADMIN -> System -> Host Aggregates
-    b. Create Host Aggregate. Remember to add compute Hosts to the Host Aggregate.
+    
+    b. Create Host Aggregate. 
+
+        Remember to add compute Hosts to the Host Aggregate.
     
 4. Import Key Pairs if need be. (Will be required for many scenarios)
     
