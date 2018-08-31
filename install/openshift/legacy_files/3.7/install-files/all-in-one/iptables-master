@@ -1,0 +1,29 @@
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  8082 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  9100 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  8084 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  8143 -j ACCEPT -m comment --comment contrail
+
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  8080 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  5269 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  8093 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  8083 -j ACCEPT -m comment --comment contrail
+
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  8092 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  8086 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  8081 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  2181 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  2182 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  2888:3889 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  5672 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  6381 -j ACCEPT -m comment --comment contrail
+
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  9092 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  9041 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  9042 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  9160 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  9161 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  7000 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  7010 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  7199 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  7198 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  8443 -j ACCEPT -m comment --comment contrail
