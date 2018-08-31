@@ -1,0 +1,58 @@
+[OSEv3:children]
+masters
+nodes
+etcd
+lb
+openshift_ca
+
+[OSEv3:vars]
+ansible_ssh_user=root
+ansible_become=yes
+debug_level=2
+deployment_type=openshift-enterprise
+openshift_release=v3.7
+openshift_install_examples=true
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
+openshift_master_htpasswd_users={'admin': 'contrail123'}
+osm_cluster_network_cidr=10.32.0.0/12
+openshift_portal_net=10.96.0.0/12
+openshift_use_dnsmasq=true
+openshift_clock_enabled=true
+openshift_hosted_manage_registry=false
+openshift_hosted_manage_router=false
+openshift_use_openshift_sdn=false
+openshift_enable_service_catalog=false
+os_sdn_network_plugin_name='cni'
+
+# Below are Contrail variables. Comment them out if you don't want to install Contrail through ansible-playbook
+
+openshift_use_contrail=true
+contrail_os_release=redhat7
+contrail_version=4.1.0.0-8
+analyticsdb_min_diskgb=30
+configdb_min_diskgb=25
+vrouter_physical_interface=enp2s0
+contrail_docker_images_path=/root/docker_images
+cni_version=v0.5.2
+
+[masters]
+10.87.64.149 openshift_hostname=5b4s40
+10.87.64.150 openshift_hostname=5b4s41
+10.84.29.39 openshift_hostname=b7s39
+
+[lb]
+10.84.18.2 openshift_hostname=a4s2
+
+[etcd]
+10.87.64.149 openshift_hostname=5b4s40
+
+[nodes]
+10.87.64.149 openshift_hostname=5b4s40
+10.87.64.150 openshift_hostname=5b4s41
+10.84.29.39 openshift_hostname=b7s39
+10.84.18.3 openshift_hostname=a4s3
+10.84.18.4 openshift_hostname=a4s4
+10.84.18.5 openshift_hostname=a4s5
+
+[openshift_ca]
+10.87.64.149 openshift_hostname=5b4s40
