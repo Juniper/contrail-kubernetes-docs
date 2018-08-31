@@ -1,0 +1,46 @@
+---
+- hosts: OSEv3
+  tasks:
+  - name: Install base packages
+    yum: name="{{ item }}" state=present
+    with_items:
+    - net-tools
+    - bind-utils
+    - iptables-services
+    - bridge-utils
+    - bash-completion
+    - python-pip
+    - kexec-tools
+    - sos
+    - psacct
+    - ntp
+    - NetworkManager
+
+  - name: Install openshift-enterprise package
+    yum: name="{{ item }}" state=present
+    with_items:
+    - atomic-openshift-docker-excluder
+    when:
+    - deployment_type == "openshift-enterprise"
+    
+  - name: Install docker-py
+    command: pip install docker-py
+    when:
+    - deployment_type == "openshift-enterprise"
+
+  - name: Install docker
+    yum:
+      name: docker-1.12.6
+      state: present
+
+  - name: Enable & start docker service
+    service:
+      name: docker
+      state: started
+      enabled: yes
+      
+  - name: Enble & start network-manager service
+    service:
+      name: NetworkManager
+      state: started
+      enabled: yes
