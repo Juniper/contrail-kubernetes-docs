@@ -1,0 +1,2 @@
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  8085 -j ACCEPT -m comment --comment contrail
+iptables -I OS_FIREWALL_ALLOW 1 -p tcp --dport  9091 -j ACCEPT -m comment --comment contrail
