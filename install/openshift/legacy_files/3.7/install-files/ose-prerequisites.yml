@@ -1,0 +1,30 @@
+---
+- hosts: OSEv3
+  tasks:
+  - name: Install the following base packages
+    yum: name="{{ item }}" state=present
+    with_items:
+      - wget
+      - net-tools
+      - bind-utils
+      - iptables-services
+      - bridge-utils
+      - bash-completion
+      - python-pip
+      - git
+
+  - name: Install ansible and additional packages
+    yum: name="{{ item }}" state=present enablerepo=epel
+    with_items:
+      - pyOpenSSL
+      - python-cryptography
+      - python-lxml
+
+  - name: Install Docker
+    yum: name=docker state=present
+
+  - name: Enable Docker Service
+    service: name=docker enabled=yes
+
+  - name: Start Docker Service
+    service: name=docker state=started
