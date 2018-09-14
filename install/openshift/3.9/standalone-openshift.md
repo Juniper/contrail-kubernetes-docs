@@ -102,10 +102,10 @@ Fix:
 touch /etc/origin/node/resolv.conf
 
 rerun :
-ansible-playbook -i inventory/byo/ose-install playbooks/byo/config.yml
+ansible-playbook -i inventory/ose-install playbooks/deploy_cluster.yml
 
 ```
-2. If you see docker image pull errors, do following on all nodes
+2. If you see docker image pull errors, do following on all nodes, restart docker and run deploy_cluster again
 
 ```shell
 vi /etc/docker/daemon.json
