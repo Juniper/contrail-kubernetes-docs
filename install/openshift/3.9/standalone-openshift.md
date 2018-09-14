@@ -137,8 +137,8 @@ osm_cluster_network_cidr=10.32.0.0/12
 openshift_portal_net=10.96.0.0/12
 openshift_use_dnsmasq=true
 openshift_clock_enabled=true
-openshift_hosted_manage_registry=true
-openshift_hosted_manage_router=true
+openshift_hosted_manage_registry=false
+openshift_hosted_manage_router=false
 openshift_enable_service_catalog=false
 openshift_use_openshift_sdn=false
 os_sdn_network_plugin_name='cni'
@@ -155,8 +155,6 @@ contrail_registry=opencontrailnightly
 #contrail_registry_password=test
 # Below option presides over contrail masters if set
 #vrouter_physical_interface=ens160
-contrail_vip=10.84.13.52
-vrouter_gateway=10.87.65.126
 #docker_version=1.13.1
 
 # Contrail_vars
@@ -174,6 +172,7 @@ cluster_name=myk8s
 #public_fip_pool={}
 #vnc_endpoint_ip=20.1.1.1
 #vnc_endpoint_port=8082
+#contrail_controllers="10.84.13.52"
 
 [masters]
 10.84.13.52 openshift_hostname=openshift-master
@@ -188,9 +187,6 @@ cluster_name=myk8s
 
 [openshift_ca]
 10.84.13.52 openshift_hostname=openshift-master
-
-[contrail_masters]
-20.1.1.1 openshift_hostname=openshift-master
 ```
 
 ### Note:
