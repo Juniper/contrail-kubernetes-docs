@@ -62,7 +62,7 @@ ssh-copy-id root@10.84.11.33
 ```
 
 * Run ansible playbook:
-Before running make sure that you have edited inventory/byo/ose-install file as shown below
+Before running make sure that you have edited inventory/ose-install file as shown below
 
 ```shell 
 ansible-playbook -i inventory/ose-install playbooks/prerequisites.yml
