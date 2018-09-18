@@ -24,6 +24,20 @@ Please ensure that the following prerequisites are met, for a successful provisi
           y.y.y.y minion1
           z.z.z.z minion2
 ```
+   2.b. [IF APPLICABLE] *If Contrail images will be downloaded from Contrail insecure registry, add the Contrail repository as insecure repository in docker*
+   
+***NOTE: This will need to be done on all nodes of your Kubernetes cluster ***
+```
+Step a:
+cat <<EOF >>/etc/docker/daemon.json
+{
+"insecure-registries": ["ci-repo.englab.juniper.net:5010"]
+}
+EOF
+
+Step b:
+service docker restart
+```
 3. If Contrail container images are stored in private/secure docker registry, a kubernetes secret should be created and referenced during creation of single yaml, with credentials of the private docker registry.
 
 ```
