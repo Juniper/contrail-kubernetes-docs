@@ -113,6 +113,10 @@ vi /etc/docker/daemon.json
   "insecure_registries" : ["opencontrailnightly"]
 }
 ```
+3. lock the "/etc/resolv.conf" on all nodes if you see any image pull errors
+```shell
+chattr +i /etc/resolv.conf
+```
 
 ### Sample ose-install file:
 
@@ -191,6 +195,7 @@ cluster_name=myk8s
 
 ### Note:
 * dnsmasq on master needs to be restarted after installation if dns is not working as expected.
+* use "oc adm manage-node --selector=region=infra --schedulable=false" to make infra nodes non schedulable
 
 
 ### Make OpenShift web console working
