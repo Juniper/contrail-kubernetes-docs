@@ -162,10 +162,13 @@ contrail_registry=opencontrailnightly
 #docker_version=1.13.1
 
 # Contrail_vars
-#kubernetes_api_server=10.84.13.52
-#kubernetes_api_port=8080
+# below variables are used by contrail kubemanager to configure the cluster,
+# you can configure all options below.
+
+#kubernetes_api_server=10.84.13.52 
+#kubernetes_api_port=8080               
 #kubernetes_api_secure_port=8443
-cluster_name=myk8s
+cluster_name=myk8s                  
 #cluster_project={}
 #cluster_network={}
 #pod_subnets=10.32.0.0/12
@@ -176,7 +179,6 @@ cluster_name=myk8s
 #public_fip_pool={}
 #vnc_endpoint_ip=20.1.1.1
 #vnc_endpoint_port=8082
-#contrail_controllers="10.84.13.52"
 
 [masters]
 10.84.13.52 openshift_hostname=openshift-master
