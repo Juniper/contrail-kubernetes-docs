@@ -163,9 +163,9 @@ contrail_registry=opencontrailnightly
 
 # Contrail_vars
 # below variables are used by contrail kubemanager to configure the cluster,
-# you can configure all options below.
+# you can configure all options below. All values are defaults and can be modified.
 
-#kubernetes_api_server=10.84.13.52 
+#kubernetes_api_server=10.84.13.52         # in our case this is the master, which is default
 #kubernetes_api_port=8080               
 #kubernetes_api_secure_port=8443
 cluster_name=myk8s                  
