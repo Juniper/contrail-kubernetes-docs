@@ -47,9 +47,6 @@ compute : server3 (10.84.11.33)
 10.84.11.11 server1.contrail.juniper.net server1
 10.84.11.22 server2.contrail.juniper.net server2
 10.84.11.33 server3.contrail.juniper.net server3
-20.1.1.1    server1.contrail.juniper.net server1
-20.1.1.2    server2.contrail.juniper.net server2
-20.1.1.3    server3.contrail.juniper.net server3
 ```
 
 * Setup passless ssh to ansible node itself and all nodes:
