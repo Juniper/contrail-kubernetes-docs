@@ -69,7 +69,7 @@ The following are the Link Local Services are required:
 | Contrail Msg Queue  | < Service IP for the running node > | 5673 | < Node IP of running node > | 5673 |
 | Contrail VNC DB     | < Service IP for the running node > | 9161 | < Node IP of running node > | 9161 |
 | Keystone            | < Service IP for the running node > | 35357 | < Node IP of running node > | 35357 |
-| VRouter             | < Service IP for the running node > | 9091 | 127.0.0.1 | 9091 |
+| K8s-cni-to-agent    | < Service IP for the running node > | 9091 | 127.0.0.1 | 9091 |
 
 ####Example:
 
@@ -104,9 +104,7 @@ The following link-local services should be created:
 | Contrail VNC DB 2    | 10.10.10.2 | 9161 | 192.168.1.101 | 9161 |
 | Contrail VNC DB 3    | 10.10.10.3 | 9161 | 192.168.1.102 | 9161 |
 | Keystone             | 10.10.10.4 | 35357 | 192.168.1.200| 35357 |
-| VRouter-192.168.1.201 | 10.10.10.5 | 9091 | 127.0.0.1 | 9091 |
-| VRouter-192.168.1.202 | 10.10.10.6 | 9091 | 127.0.0.1 | 9091 |
-| VRouter-192.168.1.203 | 10.10.10.7 | 9091 | 127.0.0.1 | 9091 |
+| K8s-cni-to-agent | 10.10.10.5 | 9091 | 127.0.0.1 | 9091 |
 
 
 ## Install openshift using openshift-ansible
@@ -117,16 +115,16 @@ and add following details to your ose-install file
 #Nested mode vars
 nested_mode_contrail=true
 auth_mode=keystone
-keystone_auth_host=w.x.y.z <--- This should be the IP where Keystone service is running.
+keystone_auth_host=<w.x.y.z> <--- This should be the IP where Keystone service is running.
 keystone_auth_admin_tenant=admin
 keystone_auth_admin_user=admin
 keystone_auth_admin_password=MAYffWrX7ZpPrV2AMAa9zAUvG <-- Keystone admin password.
 keystone_auth_admin_port=35357
 keystone_auth_url_version=/v3
 #k8s_nested_vrouter_vip is a service IP for the running node which we configured above
-k8s_nested_vrouter_vip=10.10.10.5
+k8s_nested_vrouter_vip=10.10.10.5 <-- Service IP configured for CNI to Agent communication.(K8s-cni-to-agent in above examples)
 #k8s_vip is kubernetes api server ip
-k8s_vip=192.168.1.3
+k8s_vip=<W.X.Y.Z> . <-- IP of the Openshift Master Node.
 #cluster_network is the one which vm network belongs to
 cluster_network="{'domain': 'default-domain', 'project': 'admin', 'name': 'net1'}"
 ```
