@@ -117,10 +117,10 @@ and add following details to your ose-install file
 #Nested mode vars
 nested_mode_contrail=true
 auth_mode=keystone
-keystone_auth_host=192.168.24.12
+keystone_auth_host=w.x.y.z <--- This should be the IP where Keystone service is running.
 keystone_auth_admin_tenant=admin
 keystone_auth_admin_user=admin
-keystone_auth_admin_password=MAYffWrX7ZpPrV2AMAa9zAUvG
+keystone_auth_admin_password=MAYffWrX7ZpPrV2AMAa9zAUvG <-- Keystone admin password.
 keystone_auth_admin_port=35357
 keystone_auth_url_version=/v3
 #k8s_nested_vrouter_vip is a service IP for the running node which we configured above
