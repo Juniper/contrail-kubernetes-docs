@@ -88,9 +88,8 @@ This cluster is made of 7 nodes. We will allocate 7 unused IP's for these nodes:
 192.168.1.101  --> 10.10.10.2
 192.168.1.102  --> 10.10.10.3
 192.168.1.200  --> 10.10.10.4
-192.168.1.201  --> 10.10.10.5
-192.168.1.202  --> 10.10.10.6
-192.168.1.203  --> 10.10.10.7
+192.168.1.201/192.168.1.202/192.168.1.203  --> 10.10.10.5 
+   NOTE: One Service IP will be enough to represent all VRouter nodes.
 ```
 The following link-local services should be created:
 
