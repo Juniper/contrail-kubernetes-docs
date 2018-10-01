@@ -80,7 +80,7 @@ Contrail Analytics : 192.168.1.100, 192.168.1.101
 Contrail Msg Queue : 192.168.1.100
 Contrail VNC DB : 192.168.1.100, 192.168.1.101, 192.168.1.102
 Keystone: 192.168.1.200
-Vrouter: 192.168.1.300, 192.168.1.400, 192.168.1.500
+Vrouter: 192.168.1.201, 192.168.1.202, 192.168.1.203
 ```
 This cluster is made of 7 nodes. We will allocate 7 unused IP's for these nodes:
 ```
@@ -88,9 +88,9 @@ This cluster is made of 7 nodes. We will allocate 7 unused IP's for these nodes:
 192.168.1.101  --> 10.10.10.2
 192.168.1.102  --> 10.10.10.3
 192.168.1.200  --> 10.10.10.4
-192.168.1.300  --> 10.10.10.5
-192.168.1.400  --> 10.10.10.6
-192.168.1.500  --> 10.10.10.7
+192.168.1.201  --> 10.10.10.5
+192.168.1.202  --> 10.10.10.6
+192.168.1.203  --> 10.10.10.7
 ```
 The following link-local services should be created:
 
@@ -104,9 +104,9 @@ The following link-local services should be created:
 | Contrail VNC DB 2    | 10.10.10.2 | 9161 | 192.168.1.101 | 9161 |
 | Contrail VNC DB 3    | 10.10.10.3 | 9161 | 192.168.1.102 | 9161 |
 | Keystone             | 10.10.10.4 | 35357 | 192.168.1.200| 35357 |
-| VRouter-192.168.1.300 | 10.10.10.5 | 9091 | 127.0.0.1 | 9091 |
-| VRouter-192.168.1.400 | 10.10.10.6 | 9091 | 127.0.0.1 | 9091 |
-| VRouter-192.168.1.500 | 10.10.10.7 | 9091 | 127.0.0.1 | 9091 |
+| VRouter-192.168.1.201 | 10.10.10.5 | 9091 | 127.0.0.1 | 9091 |
+| VRouter-192.168.1.202 | 10.10.10.6 | 9091 | 127.0.0.1 | 9091 |
+| VRouter-192.168.1.203 | 10.10.10.7 | 9091 | 127.0.0.1 | 9091 |
 
 
 ## Install openshift using openshift-ansible
