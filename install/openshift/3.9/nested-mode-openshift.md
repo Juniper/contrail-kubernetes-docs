@@ -114,16 +114,16 @@ and add following details to your ose-install file
 #Nested mode vars
 nested_mode_contrail=true
 auth_mode=keystone
-keystone_auth_host=<w.x.y.z> <--- This should be the IP where Keystone service is running.
+keystone_auth_host=<w.x.y.z>        <--- This should be the IP where Keystone service is running.
 keystone_auth_admin_tenant=admin
 keystone_auth_admin_user=admin
-keystone_auth_admin_password=MAYffWrX7ZpPrV2AMAa9zAUvG <-- Keystone admin password.
+keystone_auth_admin_password=MAYffWrX7ZpPrV2AMAa9zAUvG     <-- Keystone admin password.
 keystone_auth_admin_port=35357
 keystone_auth_url_version=/v3
 #k8s_nested_vrouter_vip is a service IP for the running node which we configured above
-k8s_nested_vrouter_vip=10.10.10.5 <-- Service IP configured for CNI to Agent communication.(K8s-cni-to-agent in above examples)
+k8s_nested_vrouter_vip=10.10.10.5   <-- Service IP configured for CNI to Agent communication.(K8s-cni-to-agent in above examples)
 #k8s_vip is kubernetes api server ip
-k8s_vip=<W.X.Y.Z> . <-- IP of the Openshift Master Node.
+k8s_vip=<W.X.Y.Z>                   <-- IP of the Openshift Master Node.
 #cluster_network is the one which vm network belongs to
-cluster_network="{'domain': 'default-domain', 'project': 'admin', 'name': 'net1'}"
+cluster_network="{'domain': 'default-domain', 'project': 'admin', 'name': 'net1'}" <-- FQName of the Virtual Network where Virtual Machines are running. There are the VM's in which Openshift cluster is being installed in nested mode.
 ```
