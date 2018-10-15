@@ -145,7 +145,10 @@ openshift_use_openshift_sdn=false
 os_sdn_network_plugin_name='cni'
 openshift_disable_check=memory_availability,package_availability,disk_availability,package_version,docker_storage
 openshift_docker_insecure_registries=opencontrailnightly
+openshift_web_console_install=false
+#openshift_web_console_nodeselector={'region':'infra'}
 
+openshift_web_console_contrail_install=true
 openshift_use_contrail=true
 nested_mode_contrail=false
 contrail_version=5.0
@@ -157,6 +160,7 @@ contrail_registry=opencontrailnightly
 # Below option presides over contrail masters if set
 #vrouter_physical_interface=ens160
 #docker_version=1.13.1
+ntpserver=10.1.1.1 # a proper ntpserver is required for contrail.
 
 # Contrail_vars
 # below variables are used by contrail kubemanager to configure the cluster,
@@ -198,50 +202,15 @@ cluster_name=myk8s
 
 
 ### Make OpenShift web console working
-Update service type to `NodePort` on port 30443.
+* We will be installing our customized web console which will run
+on infra nodes.
+* To do this disable the openshift web console and enable contrail's webconsole, add below in the ose-install
 ```
-oc edit service webconsole -n openshift-web-console
-```
-```
-spec:
-  clusterIP: 10.97.8.137
-  externalTrafficPolicy: Cluster
-  ports:
-  - name: https
-    nodePort: 30443
-    port: 443
-    protocol: TCP
-    targetPort: 8443
-  selector:
-    webconsole: "true"
-  sessionAffinity: None
-  type: NodePort
+openshift_web_console_install=false
+openshift_web_console_contrail_install=true
 ```
 
-Update `consolePublicURL` and `masterPublicURL` using IP address, instead of name.
-```
-oc edit configmap webconsole-config -n openshift-web-console
-```
-```
-      consolePublicURL: https://<infra node IP address>:30443/console/
-      masterPublicURL: https://<master IP address>:8443
-```
-
-Update `/etc/origin/master/master-config.yaml`.
-```
-# Add infra node IP address.
-corsAllowedOrigins:
-- (?i)//10\.84\.29\.100(:|\z)
-# Set redirect URL for web console and master public URL.
-oauthConfig:
-  assetPublicURL: https://10.84.29.100:30443/console/
-  masterPublicURL: https://10.84.29.97:8443
-```
-
-Restart master service.
-```
-systemctl restart atomic-openshift-master-api
-```
+After above step
 
 Create a password for admin user to login to the UI
 ```
@@ -254,9 +223,10 @@ Assign cluster-admin role to admin user
 (master-node)# oc login -u admin
 ```
 
-### Firewall rule for NodePort
-Due to the issue [https://github.com/kubernetes/kubernetes/issues/39823](https://github.com/kubernetes/kubernetes/issues/39823), which is fixed by the pull [https://github.com/kubernetes/kubernetes/pull/52569](https://github.com/kubernetes/kubernetes/pull/52569), the quick workaround is to add a rule on all nodes.
+### Accessing web console
+* Go to browser and type the entire fqdn name of your master node / lb node, followed by :8443/console
 ```
-iptables -I FORWARD 2 -j ACCEPT
+https://<your full domain name>:8443/console
 ```
+* use username password created above to login into webconsole
 
