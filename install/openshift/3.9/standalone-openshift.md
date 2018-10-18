@@ -230,5 +230,6 @@ Assign cluster-admin role to admin user
 https://<your host name from your ose-install inventory>:8443/console
 ```
 * use username/password created above to login into webconsole
-Note : your dns should resolve for the above hostname for access
+* Note : your dns should resolve for the above hostname for access, else modify your /etc/hosts file to route
+  to above host
 
