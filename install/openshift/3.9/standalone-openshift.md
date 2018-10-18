@@ -212,10 +212,11 @@ openshift_web_console_contrail_install=true
 
 After above step
 
-Create a password for admin user to login to the UI
+Create a password for admin user to login to the UI from master node
 ```
 (master-node)# htpasswd /etc/origin/master/htpasswd admin
 ```
+**If you are using a lb, you manually need to copy the htpasswd file into all your masters
 
 Assign cluster-admin role to admin user
 ```
@@ -226,7 +227,7 @@ Assign cluster-admin role to admin user
 ### Accessing web console
 * Go to browser and type the entire fqdn name of your master node / lb node, followed by :8443/console
 ```
-https://<your full domain name>:8443/console
+https://<your host name from your ose-install inventory>:8443/console
 ```
-* use username password created above to login into webconsole
+* use username/password created above to login into webconsole
 
