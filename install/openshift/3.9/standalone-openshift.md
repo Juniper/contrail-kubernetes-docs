@@ -59,7 +59,7 @@ ssh-copy-id root@10.84.11.33
 ```
 
 * Run ansible playbook:
-Before running make sure that you have edited inventory/ose-install file as shown below
+Before running make sure that you have edited inventory/ose-install file as shown below and the temporary fixes.
 
 ```shell 
 ansible-playbook -i inventory/ose-install playbooks/prerequisites.yml
@@ -102,15 +102,9 @@ rerun :
 ansible-playbook -i inventory/ose-install playbooks/deploy_cluster.yml
 
 ```
-2. If you see docker image pull errors, do following on all nodes, restart docker and run deploy_cluster again
+2. If you see docker image pull errors, and your registry is a insecure registry. set openshift_docker_insecure_registries and rerun prerequisites play. 
 
-```shell
-vi /etc/docker/daemon.json
-{
-  "insecure_registries" : ["opencontrailnightly"]
-}
-```
-3. lock the "/etc/resolv.conf" on all nodes if you see any image pull errors
+3. This is Mandate for now, lock the "/etc/resolv.conf" on all nodes before even running the deploy_cluster else you see image pull errors.
 ```shell
 chattr +i /etc/resolv.conf
 ```
