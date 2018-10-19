@@ -22,7 +22,8 @@ Required topology is as shown below.
   yum install -y python-pip
   pip install ansible==2.5.2
   ```
-* Clone ansible repo (ansible node): 
+* Get the files from the released and verified tar or git clone below : 
+* Its recommend to get the code from the tar as the latest code may have behavior changes.
 
 ```shell
 git clone https://github.com/Juniper/openshift-ansible.git -b release-3.9-contrail
