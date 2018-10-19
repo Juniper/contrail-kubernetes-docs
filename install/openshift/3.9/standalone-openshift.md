@@ -23,11 +23,12 @@ Required topology is as shown below.
   pip install ansible==2.5.2
   ```
 * Get the files from the released and verified tar or git clone below : 
-* Its recommend to get the code from the tar as the latest code may have behavior changes.
 
 ```shell
 git clone https://github.com/Juniper/openshift-ansible.git -b release-3.9-contrail
 ```
+* Note : Its recommend to get the code from the tar as the latest code may have behavior changes.
+
 
 * For this setup am assuming one master one infra and one compute
 ```shell
