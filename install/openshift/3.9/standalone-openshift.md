@@ -60,14 +60,6 @@ ssh-copy-id root@10.84.11.22
 ssh-copy-id root@10.84.11.33
 ```
 
-* Run ansible playbook:
-Before running make sure that you have edited inventory/ose-install file as shown below and the temporary fixes.
-
-```shell 
-ansible-playbook -i inventory/ose-install playbooks/prerequisites.yml
-ansible-playbook -i inventory/ose-install playbooks/deploy_cluster.yml
-```
-
 ### Note (temporary fixes):
 
 1. If you see any of below couple of different TASK errors :
@@ -110,6 +102,15 @@ ansible-playbook -i inventory/ose-install playbooks/deploy_cluster.yml
 ```shell
 chattr +i /etc/resolv.conf
 ```
+
+### Run ansible playbook:
+Before running make sure that you have edited inventory/ose-install file as shown below.
+
+```shell 
+ansible-playbook -i inventory/ose-install playbooks/prerequisites.yml
+ansible-playbook -i inventory/ose-install playbooks/deploy_cluster.yml
+```
+
 
 ### Sample ose-install file:
 
@@ -216,7 +217,7 @@ Create a password for admin user to login to the UI from master node
 
 Assign cluster-admin role to admin user
 ```
-(master-node)# oadm policy add-cluster-role-to-user cluster-admin admin
+(master-node)# oc adm policy add-cluster-role-to-user cluster-admin admin
 (master-node)# oc login -u admin
 ```
 
