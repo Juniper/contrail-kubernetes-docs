@@ -98,9 +98,6 @@ ansible-playbook -i inventory/ose-install playbooks/deploy_cluster.yml
 ```
 2. If you see docker image pull errors, and your registry is a insecure registry. set openshift_docker_insecure_registries and rerun prerequisites play. 
 
-3. This is Mandate for now, lock the "/etc/resolv.conf" on all nodes before even running the deploy_cluster else you see image pull errors.
-```shell
-chattr +i /etc/resolv.conf
 ```
 
 ### Run ansible playbook:
@@ -112,7 +109,7 @@ ansible-playbook -i inventory/ose-install playbooks/deploy_cluster.yml
 ```
 
 
-### Sample ose-install file:
+### Sample ose-install file for non HA:
 
 ```yaml
 [OSEv3:children]
@@ -192,6 +189,89 @@ ntpserver=10.1.1.1 # a proper ntpserver is required for contrail.
 [openshift_ca]
 10.84.13.52 openshift_hostname=openshift-master
 ```
+
+### Sample ose-install file for HA:
+```yaml
+[OSEv3:children]
+masters
+nodes
+etcd
+lb
+openshift_ca
+
+[OSEv3:vars]
+ansible_ssh_user=root
+ansible_become=yes
+debug_level=2
+deployment_type=openshift-enterprise
+openshift_release=v3.9
+openshift_repos_enable_testing=true
+containerized=false
+openshift_install_examples=true
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
+osm_cluster_network_cidr=10.32.0.0/12
+openshift_portal_net=10.96.0.0/12
+openshift_use_dnsmasq=true
+openshift_clock_enabled=true
+openshift_enable_service_catalog=false
+openshift_use_openshift_sdn=false
+os_sdn_network_plugin_name='cni'
+openshift_disable_check=disk_availability,package_version,docker_storage
+openshift_docker_insecure_registries=ci-repo.englab.juniper.net:5010
+openshift_web_console_install=false
+openshift_web_console_contrail_install=true
+openshift_web_console_nodeselector={'region':'infra'}
+openshift_hosted_manage_registry=true
+openshift_hosted_registry_selector="region=infra"
+openshift_hosted_manage_router=true
+openshift_hosted_router_selector="region=infra"
+ntpserver=<your ntpserver>
+
+
+# Openshift HA
+openshift_master_cluster_method=native
+openshift_master_cluster_hostname=lb
+openshift_master_cluster_public_hostname=lb
+
+
+# Below are Contrail variables. Comment them out if you don't want to install Contrail through ansible-playbook
+contrail_version=5.0
+openshift_use_contrail=true
+contrail_registry=hub.juniper.net/contrail
+contrail_registry_username=<username>
+contrail_registry_password=<password>
+contrail_container_tag=<image-tag>
+#vrouter_physical_interface=eth0
+
+[masters]
+10.0.0.13 openshift_hostname=master1
+10.0.0.4 openshift_hostname=master2
+10.0.0.5 openshift_hostname=master3
+
+[lb]
+10.0.0.6 openshift_hostname=lb
+
+[etcd]
+10.0.0.13 openshift_hostname=master1
+10.0.0.4 openshift_hostname=master2
+10.0.0.5 openshift_hostname=master3
+
+[nodes]
+10.0.0.13 openshift_hostname=master1
+10.0.0.4 openshift_hostname=master2
+10.0.0.5 openshift_hostname=master3
+10.0.0.7 openshift_hostname=slave1
+10.0.0.10 openshift_hostname=slave2
+10.0.0.9 openshift_hostname=infra1 openshift_node_labels="{'region': 'infra'}"
+10.0.0.11 openshift_hostname=infra2 openshift_node_labels="{'region': 'infra'}"
+10.0.0.8 openshift_hostname=infra3 openshift_node_labels="{'region': 'infra'}"
+
+[openshift_ca]
+10.0.0.13 openshift_hostname=master1
+10.0.0.4 openshift_hostname=master2
+10.0.0.5 openshift_hostname=master3
+```
+
 
 ### Note:
 * dnsmasq on master needs to be restarted after installation if dns is not working as expected.
