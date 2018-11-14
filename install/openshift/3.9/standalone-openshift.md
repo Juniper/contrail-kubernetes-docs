@@ -98,8 +98,6 @@ ansible-playbook -i inventory/ose-install playbooks/deploy_cluster.yml
 ```
 2. If you see docker image pull errors, and your registry is a insecure registry. set openshift_docker_insecure_registries=<your registry> in the ose-install and rerun prerequisites play. 
 
-```
-
 ### Run ansible playbook:
 Before running make sure that you have edited inventory/ose-install file as shown below.
 
