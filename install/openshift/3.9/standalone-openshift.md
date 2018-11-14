@@ -12,9 +12,9 @@ Required topology is as shown below.
 
 * Setup environment(all nodes):
   
-  * For centOS (origin installations) : [centos](/install/openshift/3.9/centos/configurations.md)
+  * For centOS (origin installations) : [click_here](/install/openshift/3.9/centos/configurations.md)
   
-  * For Redhat (openshift-enterprise installations) : [Redhat](/install/openshift/3.9/redhat/configurations.md)
+  * For Redhat (openshift-enterprise installations) : [click_here](/install/openshift/3.9/redhat/configurations.md)
   
 * Needs supported ansible version
   
@@ -96,7 +96,7 @@ rerun :
 ansible-playbook -i inventory/ose-install playbooks/deploy_cluster.yml
 
 ```
-2. If you see docker image pull errors, and your registry is a insecure registry. set openshift_docker_insecure_registries and rerun prerequisites play. 
+2. If you see docker image pull errors, and your registry is a insecure registry. set openshift_docker_insecure_registries=<your registry> in the ose-install and rerun prerequisites play. 
 
 ```
 
