@@ -31,6 +31,8 @@ File: /etc/hosts
 x.x.x.x hostname hostname.fqname
 ```
 
+4. Docker version >= 1.24
+
 # Installation
   Installation of Contrail is a **1**-step process.
 
