@@ -39,7 +39,7 @@ x.x.x.x hostname hostname.fqname
   Note: Replace x.x.x.x with the IP of your Kubernetes Master node.
 
 ```
-K8S_MASTER_IP=x.x.x.x;  mkdir -pm 777 /var/lib/contrail/kafka-logs; curl https://raw.githubusercontent.com/Juniper/contrail-kubernetes-docs/master/install/kubernetes/templates/contrail-single-step-cni-install-ubuntu.yaml | sed "s/{{ K8S_MASTER_IP }}/$K8S_MASTER_IP/g" | kubectl apply -f -
+K8S_MASTER_IP=x.x.x.x;CONTRAIL_REPO=ci-repo.englab.juniper.net:5010; mkdir -pm 777 /var/lib/contrail/kafka-logs; curl https://raw.githubusercontent.com/Juniper/contrail-kubernetes-docs/master/install/kubernetes/templates/contrail-single-step-cni-install-ubuntu.yaml | sed "s/{{ K8S_MASTER_IP }}/$K8S_MASTER_IP/g; s/{{ CONTRAIL_REPO }}/$CONTRAIL_REPO/g" | kubectl apply -f -
 ```
 
 # What just happened ?
