@@ -117,10 +117,13 @@ spec:
       - key: node-role.kubernetes.io/master
         operator: Exists
         effect: NoSchedule
+      - key: node.kubernetes.io/not-ready
+        operator: Exists
+        effect: NoSchedule
       hostNetwork: true
       containers:
       - name: config-zookeeper
-        image: "ci-repo.englab.juniper.net:5010/contrail-external-zookeeper:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-external-zookeeper:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -164,10 +167,13 @@ spec:
       - key: node-role.kubernetes.io/master
         operator: Exists
         effect: NoSchedule
+      - key: node.kubernetes.io/not-ready
+        operator: Exists
+        effect: NoSchedule
       hostNetwork: true
       containers:
       - name: analytics-zookeeper
-        image: "ci-repo.englab.juniper.net:5010/contrail-external-zookeeper:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-external-zookeeper:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -211,10 +217,13 @@ spec:
       - key: node-role.kubernetes.io/master
         operator: Exists
         effect: NoSchedule
+      - key: node.kubernetes.io/not-ready
+        operator: Exists
+        effect: NoSchedule
       hostNetwork: true
       containers:
       - name: kafka
-        image: "ci-repo.englab.juniper.net:5010/contrail-external-kafka:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-external-kafka:latest"
         imagePullPolicy: IfNotPresent
         env:
         - name: NODE_TYPE
@@ -256,10 +265,13 @@ spec:
       - key: node-role.kubernetes.io/master
         operator: Exists
         effect: NoSchedule
+      - key: node.kubernetes.io/not-ready
+        operator: Exists
+        effect: NoSchedule
       hostNetwork: true
       containers:
       - name: contrail-analyticsdb
-        image: "ci-repo.englab.juniper.net:5010/contrail-external-cassandra:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-external-cassandra:latest"
         imagePullPolicy: IfNotPresent
         env:
         - name: NODE_TYPE
@@ -304,10 +316,13 @@ spec:
       - key: node-role.kubernetes.io/master
         operator: Exists
         effect: NoSchedule
+      - key: node.kubernetes.io/not-ready
+        operator: Exists
+        effect: NoSchedule
       hostNetwork: true
       containers:
       - name: contrail-configdb
-        image: "ci-repo.englab.juniper.net:5010/contrail-external-cassandra:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-external-cassandra:latest"
         imagePullPolicy: IfNotPresent
         env:
         - name: NODE_TYPE
@@ -352,16 +367,19 @@ spec:
       - key: node-role.kubernetes.io/master
         operator: Exists
         effect: NoSchedule
+      - key: node.kubernetes.io/not-ready
+        operator: Exists
+        effect: NoSchedule
       hostNetwork: true
       initContainers:
       - name: contrail-node-init
-        image: "ci-repo.englab.juniper.net:5010/contrail-node-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-node-init:latest"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
         env:
         - name: CONTRAIL_STATUS_IMAGE
-          value: "ci-repo.englab.juniper.net:5010/contrail-status:latest"
+          value: "{{ CONTRAIL_REPO }}/contrail-status:latest"
         envFrom:
         - configMapRef:
             name: env
@@ -372,7 +390,7 @@ spec:
           name: host-usr-bin
       containers:
       - name: contrail-database-nodemgr
-        image: "ci-repo.englab.juniper.net:5010/contrail-nodemgr:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-nodemgr:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -431,16 +449,19 @@ spec:
       - key: node-role.kubernetes.io/master
         operator: Exists
         effect: NoSchedule
+      - key: node.kubernetes.io/not-ready
+        operator: Exists
+        effect: NoSchedule
       hostNetwork: true
       initContainers:
       - name: contrail-node-init
-        image: "ci-repo.englab.juniper.net:5010/contrail-node-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-node-init:latest"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
         env:
         - name: CONTRAIL_STATUS_IMAGE
-          value: "ci-repo.englab.juniper.net:5010/contrail-status:latest"
+          value: "{{ CONTRAIL_REPO }}/contrail-status:latest"
         envFrom:
         - configMapRef:
             name: env
@@ -451,7 +472,7 @@ spec:
           name: host-usr-bin
       containers:
       - name: contrail-analytics-api
-        image: "ci-repo.englab.juniper.net:5010/contrail-analytics-api:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-analytics-api:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -462,7 +483,7 @@ spec:
         - mountPath: /var/log/contrail
           name: analytics-logs
       - name: contrail-analytics-collector
-        image: "ci-repo.englab.juniper.net:5010/contrail-analytics-collector:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-analytics-collector:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -471,7 +492,7 @@ spec:
         - mountPath: /var/log/contrail
           name: analytics-logs
       - name: contrail-analytics-alarm-gen
-        image: "ci-repo.englab.juniper.net:5010/contrail-analytics-alarm-gen:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-analytics-alarm-gen:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -482,7 +503,7 @@ spec:
         - mountPath: /var/log/contrail
           name: analytics-logs
       - name: contrail-analytics-query-engine
-        image: "ci-repo.englab.juniper.net:5010/contrail-analytics-query-engine:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-analytics-query-engine:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -491,7 +512,7 @@ spec:
         - mountPath: /var/log/contrail
           name: analytics-logs
       - name: contrail-analytics-snmp-collector
-        image: "ci-repo.englab.juniper.net:5010/contrail-analytics-snmp-collector:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-analytics-snmp-collector:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -500,7 +521,7 @@ spec:
         - mountPath: /var/log/contrail
           name: analytics-logs
       - name: contrail-analytics-topology
-        image: "ci-repo.englab.juniper.net:5010/contrail-analytics-topology:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-analytics-topology:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -511,7 +532,7 @@ spec:
         - mountPath: /var/log/contrail
           name: analytics-logs
       - name: contrail-analytics-nodemgr
-        image: "ci-repo.englab.juniper.net:5010/contrail-nodemgr:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-nodemgr:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -568,16 +589,19 @@ spec:
       - key: node-role.kubernetes.io/master
         operator: Exists
         effect: NoSchedule
+      - key: node.kubernetes.io/not-ready
+        operator: Exists
+        effect: NoSchedule
       hostNetwork: true
       initContainers:
       - name: contrail-node-init
-        image: "ci-repo.englab.juniper.net:5010/contrail-node-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-node-init:latest"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
         env:
         - name: CONTRAIL_STATUS_IMAGE
-          value: "ci-repo.englab.juniper.net:5010/contrail-status:latest"
+          value: "{{ CONTRAIL_REPO }}/contrail-status:latest"
         envFrom:
         - configMapRef:
             name: env
@@ -588,7 +612,7 @@ spec:
           name: host-usr-bin
       containers:
       - name: contrail-controller-control
-        image: "ci-repo.englab.juniper.net:5010/contrail-controller-control-control:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-control-control:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -599,7 +623,7 @@ spec:
         - mountPath: /var/log/contrail
           name: control-logs
       - name: contrail-controller-control-dns
-        image: "ci-repo.englab.juniper.net:5010/contrail-controller-control-dns:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-control-dns:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -612,7 +636,7 @@ spec:
         - mountPath: /var/log/contrail
           name: control-logs
       - name: contrail-controller-control-named
-        image: "ci-repo.englab.juniper.net:5010/contrail-controller-control-named:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-control-named:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -627,7 +651,7 @@ spec:
         - mountPath: /var/log/contrail
           name: control-logs
       - name: contrail-controller-nodemgr
-        image: "ci-repo.englab.juniper.net:5010/contrail-nodemgr:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-nodemgr:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -686,16 +710,19 @@ spec:
       - key: node-role.kubernetes.io/master
         operator: Exists
         effect: NoSchedule
+      - key: node.kubernetes.io/not-ready
+        operator: Exists
+        effect: NoSchedule
       hostNetwork: true
       initContainers:
       - name: contrail-node-init
-        image: "ci-repo.englab.juniper.net:5010/contrail-node-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-node-init:latest"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
         env:
         - name: CONTRAIL_STATUS_IMAGE
-          value: "ci-repo.englab.juniper.net:5010/contrail-status:latest"
+          value: "{{ CONTRAIL_REPO }}/contrail-status:latest"
         envFrom:
         - configMapRef:
             name: env
@@ -706,7 +733,7 @@ spec:
           name: host-usr-bin
       containers:
       - name: contrail-controller-config-api
-        image: "ci-repo.englab.juniper.net:5010/contrail-controller-config-api:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-config-api:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -717,7 +744,7 @@ spec:
         - mountPath: /var/log/contrail
           name: config-logs
       - name: contrail-controller-config-devicemgr
-        image: "ci-repo.englab.juniper.net:5010/contrail-controller-config-devicemgr:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-config-devicemgr:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -728,7 +755,7 @@ spec:
         - mountPath: /var/log/contrail
           name: config-logs
       - name: contrail-controller-config-schema
-        image: "ci-repo.englab.juniper.net:5010/contrail-controller-config-schema:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-config-schema:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -739,7 +766,7 @@ spec:
         - mountPath: /var/log/contrail
           name: config-logs
       - name: contrail-controller-config-svcmonitor
-        image: "ci-repo.englab.juniper.net:5010/contrail-controller-config-svcmonitor:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-config-svcmonitor:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -750,7 +777,7 @@ spec:
         - mountPath: /var/log/contrail
           name: config-logs
       - name: contrail-controller-config-nodemgr
-        image: "ci-repo.englab.juniper.net:5010/contrail-nodemgr:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-nodemgr:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -813,16 +840,19 @@ spec:
       - key: node-role.kubernetes.io/master
         operator: Exists
         effect: NoSchedule
+      - key: node.kubernetes.io/not-ready
+        operator: Exists
+        effect: NoSchedule
       hostNetwork: true
       initContainers:
       - name: contrail-node-init
-        image: "ci-repo.englab.juniper.net:5010/contrail-node-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-node-init:latest"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
         env:
         - name: CONTRAIL_STATUS_IMAGE
-          value: "ci-repo.englab.juniper.net:5010/contrail-status:latest"
+          value: "{{ CONTRAIL_REPO }}/contrail-status:latest"
         envFrom:
         - configMapRef:
             name: env
@@ -833,7 +863,7 @@ spec:
           name: host-usr-bin
       containers:
       - name: contrail-controller-webui-job
-        image: "ci-repo.englab.juniper.net:5010/contrail-controller-webui-job:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-webui-job:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -844,7 +874,7 @@ spec:
         - mountPath: /var/log/contrail
           name: webui-logs
       - name: contrail-controller-webui-web
-        image: "ci-repo.englab.juniper.net:5010/contrail-controller-webui-web:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-webui-web:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -884,6 +914,9 @@ spec:
                 operator: Exists
       tolerations:
       - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
+      - key: node.kubernetes.io/not-ready
         operator: Exists
         effect: NoSchedule
       hostNetwork: true
@@ -928,10 +961,13 @@ spec:
       - key: node-role.kubernetes.io/master
         operator: Exists
         effect: NoSchedule
+      - key: node.kubernetes.io/not-ready
+        operator: Exists
+        effect: NoSchedule
       hostNetwork: true
       containers:
       - name: rabbitmq
-        image: "ci-repo.englab.juniper.net:5010/contrail-external-rabbitmq:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-external-rabbitmq:latest"
         imagePullPolicy: IfNotPresent
         env:
         - name: NODE_TYPE
@@ -980,17 +1016,20 @@ spec:
       - key: node-role.kubernetes.io/master
         operator: Exists
         effect: NoSchedule
+      - key: node.kubernetes.io/not-ready
+        operator: Exists
+        effect: NoSchedule
       automountServiceAccountToken: false
       hostNetwork: true
       initContainers:
       - name: contrail-node-init
-        image: "ci-repo.englab.juniper.net:5010/contrail-node-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-node-init:latest"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
         env:
         - name: CONTRAIL_STATUS_IMAGE
-          value: "ci-repo.englab.juniper.net:5010/contrail-status:latest"
+          value: "{{ CONTRAIL_REPO }}/contrail-status:latest"
         envFrom:
         - configMapRef:
             name: env
@@ -1001,7 +1040,7 @@ spec:
           name: host-usr-bin
       containers:
       - name: contrail-kube-manager
-        image: "ci-repo.englab.juniper.net:5010/contrail-kubernetes-kube-manager:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-kubernetes-kube-manager:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -1043,17 +1082,20 @@ spec:
       - key: node-role.kubernetes.io/master
         operator: Exists
         effect: NoSchedule
+      - key: node.kubernetes.io/not-ready
+        operator: Exists
+        effect: NoSchedule
       automountServiceAccountToken: false
       hostNetwork: true
       initContainers:
       - name: contrail-node-init
-        image: "ci-repo.englab.juniper.net:5010/contrail-node-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-node-init:latest"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
         env:
         - name: CONTRAIL_STATUS_IMAGE
-          value: "ci-repo.englab.juniper.net:5010/contrail-status:latest"
+          value: "{{ CONTRAIL_REPO }}/contrail-status:latest"
         envFrom:
         - configMapRef:
             name: env
@@ -1063,7 +1105,7 @@ spec:
         - mountPath: /host/usr/bin
           name: host-usr-bin
       - name: contrail-vrouter-kernel-init
-        image: "ci-repo.englab.juniper.net:5010/contrail-vrouter-kernel-build-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-vrouter-kernel-build-init:latest"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
@@ -1082,7 +1124,7 @@ spec:
         - mountPath: /host/bin
           name: host-bin
       - name: contrail-kubernetes-cni-init
-        image: "ci-repo.englab.juniper.net:5010/contrail-kubernetes-cni-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-kubernetes-cni-init:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -1102,7 +1144,7 @@ spec:
           name: agent-logs
       containers:
       - name: contrail-vrouter-agent
-        image: "ci-repo.englab.juniper.net:5010/contrail-vrouter-agent:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-vrouter-agent:latest"
         imagePullPolicy: IfNotPresent
         # TODO: Priveleged mode is requied because w/o it the device /dev/net/tun
         # is not present in the container. The mounting it into container
@@ -1135,7 +1177,7 @@ spec:
         - mountPath: /tmp/serviceaccount
           name: pod-secret
       - name: contrail-agent-nodemgr
-        image: "ci-repo.englab.juniper.net:5010/contrail-nodemgr:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-nodemgr:latest"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
