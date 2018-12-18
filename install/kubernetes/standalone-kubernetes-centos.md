@@ -25,11 +25,11 @@ EOF
 Step b:
 service docker restart
 ```
-3. **Linux kernel version 3.10.0-862.3.2**
+3. **Linux kernel version 3.10.0-957**
 
    Contrail forwarding uses a kernel module to provide high throughput, low latency networking.
 
-   The latest kernel module is compiled against 3.10.0-862.3.2 kernel.
+   The latest kernel module is compiled against 3.10.0-957 kernel.
 
 # Installation
   Installation of Contrail is a **1**-step process.
@@ -37,7 +37,7 @@ service docker restart
   Note: Replace x.x.x.x with the IP of your Kubernetes Master node.
 
 ```
-K8S_MASTER_IP=x.x.x.x;  mkdir -pm 777 /var/lib/contrail/kafka-logs; curl https://raw.githubusercontent.com/Juniper/contrail-kubernetes-docs/master/install/kubernetes/templates/contrail-single-step-cni-install-centos.yaml | sed "s/{{ K8S_MASTER_IP }}/$K8S_MASTER_IP/g" | kubectl apply -f -
+K8S_MASTER_IP=x.x.x.x; CONTRAIL_REPO="ci-repo.englab.juniper.net:5010"; CONTRAIL_RELEASE="latest"; mkdir -pm 777 /var/lib/contrail/kafka-logs; curl https://raw.githubusercontent.com/Juniper/contrail-kubernetes-docs/master/install/kubernetes/templates/contrail-single-step-cni-install-centos.yaml | sed "s/{{ K8S_MASTER_IP }}/$K8S_MASTER_IP/g; s/{{ CONTRAIL_REPO }}/$CONTRAIL_REPO/g; s/{{ CONTRAIL_RELEASE }}/$CONTRAIL_RELEASE/g" | kubectl apply -f -
 ```
 
 # What just happened ?
