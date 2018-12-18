@@ -31,7 +31,7 @@ service docker restart
 
    The latest kernel module is compiled against 3.10.0-957 kernel.
    
-4. **Docker version should be >= 1.24**
+4. **Docker version on all your nodes should be >= 1.24**
 
 # Installation
   Installation of Contrail is a **1**-step process.
