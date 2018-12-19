@@ -123,7 +123,7 @@ spec:
       hostNetwork: true
       containers:
       - name: config-zookeeper
-        image: "{{ CONTRAIL_REPO }}/contrail-external-zookeeper:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-external-zookeeper:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -173,7 +173,7 @@ spec:
       hostNetwork: true
       containers:
       - name: analytics-zookeeper
-        image: "{{ CONTRAIL_REPO }}/contrail-external-zookeeper:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-external-zookeeper:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -223,7 +223,7 @@ spec:
       hostNetwork: true
       containers:
       - name: kafka
-        image: "{{ CONTRAIL_REPO }}/contrail-external-kafka:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-external-kafka:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         env:
         - name: NODE_TYPE
@@ -271,7 +271,7 @@ spec:
       hostNetwork: true
       containers:
       - name: contrail-analyticsdb
-        image: "{{ CONTRAIL_REPO }}/contrail-external-cassandra:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-external-cassandra:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         env:
         - name: NODE_TYPE
@@ -322,7 +322,7 @@ spec:
       hostNetwork: true
       containers:
       - name: contrail-configdb
-        image: "{{ CONTRAIL_REPO }}/contrail-external-cassandra:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-external-cassandra:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         env:
         - name: NODE_TYPE
@@ -373,13 +373,13 @@ spec:
       hostNetwork: true
       initContainers:
       - name: contrail-node-init
-        image: "{{ CONTRAIL_REPO }}/contrail-node-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-node-init:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
         env:
         - name: CONTRAIL_STATUS_IMAGE
-          value: "{{ CONTRAIL_REPO }}/contrail-status:latest"
+          value: "{{ CONTRAIL_REPO }}/contrail-status:{{ CONTRAIL_RELEASE }}"
         envFrom:
         - configMapRef:
             name: env
@@ -390,7 +390,7 @@ spec:
           name: host-usr-bin
       containers:
       - name: contrail-database-nodemgr
-        image: "{{ CONTRAIL_REPO }}/contrail-nodemgr:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-nodemgr:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -455,13 +455,13 @@ spec:
       hostNetwork: true
       initContainers:
       - name: contrail-node-init
-        image: "{{ CONTRAIL_REPO }}/contrail-node-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-node-init:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
         env:
         - name: CONTRAIL_STATUS_IMAGE
-          value: "{{ CONTRAIL_REPO }}/contrail-status:latest"
+          value: "{{ CONTRAIL_REPO }}/contrail-status:{{ CONTRAIL_RELEASE }}"
         envFrom:
         - configMapRef:
             name: env
@@ -472,7 +472,7 @@ spec:
           name: host-usr-bin
       containers:
       - name: contrail-analytics-api
-        image: "{{ CONTRAIL_REPO }}/contrail-analytics-api:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-analytics-api:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -483,7 +483,7 @@ spec:
         - mountPath: /var/log/contrail
           name: analytics-logs
       - name: contrail-analytics-collector
-        image: "{{ CONTRAIL_REPO }}/contrail-analytics-collector:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-analytics-collector:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -492,7 +492,7 @@ spec:
         - mountPath: /var/log/contrail
           name: analytics-logs
       - name: contrail-analytics-alarm-gen
-        image: "{{ CONTRAIL_REPO }}/contrail-analytics-alarm-gen:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-analytics-alarm-gen:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -503,7 +503,7 @@ spec:
         - mountPath: /var/log/contrail
           name: analytics-logs
       - name: contrail-analytics-query-engine
-        image: "{{ CONTRAIL_REPO }}/contrail-analytics-query-engine:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-analytics-query-engine:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -512,7 +512,7 @@ spec:
         - mountPath: /var/log/contrail
           name: analytics-logs
       - name: contrail-analytics-snmp-collector
-        image: "{{ CONTRAIL_REPO }}/contrail-analytics-snmp-collector:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-analytics-snmp-collector:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -521,7 +521,7 @@ spec:
         - mountPath: /var/log/contrail
           name: analytics-logs
       - name: contrail-analytics-topology
-        image: "{{ CONTRAIL_REPO }}/contrail-analytics-topology:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-analytics-topology:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -532,7 +532,7 @@ spec:
         - mountPath: /var/log/contrail
           name: analytics-logs
       - name: contrail-analytics-nodemgr
-        image: "{{ CONTRAIL_REPO }}/contrail-nodemgr:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-nodemgr:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -595,13 +595,13 @@ spec:
       hostNetwork: true
       initContainers:
       - name: contrail-node-init
-        image: "{{ CONTRAIL_REPO }}/contrail-node-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-node-init:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
         env:
         - name: CONTRAIL_STATUS_IMAGE
-          value: "{{ CONTRAIL_REPO }}/contrail-status:latest"
+          value: "{{ CONTRAIL_REPO }}/contrail-status:{{ CONTRAIL_RELEASE }}"
         envFrom:
         - configMapRef:
             name: env
@@ -612,7 +612,7 @@ spec:
           name: host-usr-bin
       containers:
       - name: contrail-controller-control
-        image: "{{ CONTRAIL_REPO }}/contrail-controller-control-control:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-control-control:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -623,7 +623,7 @@ spec:
         - mountPath: /var/log/contrail
           name: control-logs
       - name: contrail-controller-control-dns
-        image: "{{ CONTRAIL_REPO }}/contrail-controller-control-dns:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-control-dns:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -636,7 +636,7 @@ spec:
         - mountPath: /var/log/contrail
           name: control-logs
       - name: contrail-controller-control-named
-        image: "{{ CONTRAIL_REPO }}/contrail-controller-control-named:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-control-named:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -651,7 +651,7 @@ spec:
         - mountPath: /var/log/contrail
           name: control-logs
       - name: contrail-controller-nodemgr
-        image: "{{ CONTRAIL_REPO }}/contrail-nodemgr:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-nodemgr:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -716,13 +716,13 @@ spec:
       hostNetwork: true
       initContainers:
       - name: contrail-node-init
-        image: "{{ CONTRAIL_REPO }}/contrail-node-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-node-init:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
         env:
         - name: CONTRAIL_STATUS_IMAGE
-          value: "{{ CONTRAIL_REPO }}/contrail-status:latest"
+          value: "{{ CONTRAIL_REPO }}/contrail-status:{{ CONTRAIL_RELEASE }}"
         envFrom:
         - configMapRef:
             name: env
@@ -733,7 +733,7 @@ spec:
           name: host-usr-bin
       containers:
       - name: contrail-controller-config-api
-        image: "{{ CONTRAIL_REPO }}/contrail-controller-config-api:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-config-api:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -744,7 +744,7 @@ spec:
         - mountPath: /var/log/contrail
           name: config-logs
       - name: contrail-controller-config-devicemgr
-        image: "{{ CONTRAIL_REPO }}/contrail-controller-config-devicemgr:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-config-devicemgr:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -755,7 +755,7 @@ spec:
         - mountPath: /var/log/contrail
           name: config-logs
       - name: contrail-controller-config-schema
-        image: "{{ CONTRAIL_REPO }}/contrail-controller-config-schema:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-config-schema:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -766,7 +766,7 @@ spec:
         - mountPath: /var/log/contrail
           name: config-logs
       - name: contrail-controller-config-svcmonitor
-        image: "{{ CONTRAIL_REPO }}/contrail-controller-config-svcmonitor:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-config-svcmonitor:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -777,7 +777,7 @@ spec:
         - mountPath: /var/log/contrail
           name: config-logs
       - name: contrail-controller-config-nodemgr
-        image: "{{ CONTRAIL_REPO }}/contrail-nodemgr:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-nodemgr:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -846,13 +846,13 @@ spec:
       hostNetwork: true
       initContainers:
       - name: contrail-node-init
-        image: "{{ CONTRAIL_REPO }}/contrail-node-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-node-init:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
         env:
         - name: CONTRAIL_STATUS_IMAGE
-          value: "{{ CONTRAIL_REPO }}/contrail-status:latest"
+          value: "{{ CONTRAIL_REPO }}/contrail-status:{{ CONTRAIL_RELEASE }}"
         envFrom:
         - configMapRef:
             name: env
@@ -863,7 +863,7 @@ spec:
           name: host-usr-bin
       containers:
       - name: contrail-controller-webui-job
-        image: "{{ CONTRAIL_REPO }}/contrail-controller-webui-job:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-webui-job:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -874,7 +874,7 @@ spec:
         - mountPath: /var/log/contrail
           name: webui-logs
       - name: contrail-controller-webui-web
-        image: "{{ CONTRAIL_REPO }}/contrail-controller-webui-web:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-controller-webui-web:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -967,7 +967,7 @@ spec:
       hostNetwork: true
       containers:
       - name: rabbitmq
-        image: "{{ CONTRAIL_REPO }}/contrail-external-rabbitmq:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-external-rabbitmq:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         env:
         - name: NODE_TYPE
@@ -1023,13 +1023,13 @@ spec:
       hostNetwork: true
       initContainers:
       - name: contrail-node-init
-        image: "{{ CONTRAIL_REPO }}/contrail-node-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-node-init:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
         env:
         - name: CONTRAIL_STATUS_IMAGE
-          value: "{{ CONTRAIL_REPO }}/contrail-status:latest"
+          value: "{{ CONTRAIL_REPO }}/contrail-status:{{ CONTRAIL_RELEASE }}"
         envFrom:
         - configMapRef:
             name: env
@@ -1040,7 +1040,7 @@ spec:
           name: host-usr-bin
       containers:
       - name: contrail-kube-manager
-        image: "{{ CONTRAIL_REPO }}/contrail-kubernetes-kube-manager:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-kubernetes-kube-manager:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -1089,13 +1089,13 @@ spec:
       hostNetwork: true
       initContainers:
       - name: contrail-node-init
-        image: "{{ CONTRAIL_REPO }}/contrail-node-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-node-init:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
         env:
         - name: CONTRAIL_STATUS_IMAGE
-          value: "{{ CONTRAIL_REPO }}/contrail-status:latest"
+          value: "{{ CONTRAIL_REPO }}/contrail-status:{{ CONTRAIL_RELEASE }}"
         envFrom:
         - configMapRef:
             name: env
@@ -1105,7 +1105,7 @@ spec:
         - mountPath: /host/usr/bin
           name: host-usr-bin
       - name: contrail-vrouter-kernel-init
-        image: "{{ CONTRAIL_REPO }}/contrail-vrouter-kernel-build-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-vrouter-kernel-build-init:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
@@ -1124,7 +1124,7 @@ spec:
         - mountPath: /host/bin
           name: host-bin
       - name: contrail-kubernetes-cni-init
-        image: "{{ CONTRAIL_REPO }}/contrail-kubernetes-cni-init:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-kubernetes-cni-init:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -1144,7 +1144,7 @@ spec:
           name: agent-logs
       containers:
       - name: contrail-vrouter-agent
-        image: "{{ CONTRAIL_REPO }}/contrail-vrouter-agent:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-vrouter-agent:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         # TODO: Priveleged mode is requied because w/o it the device /dev/net/tun
         # is not present in the container. The mounting it into container
@@ -1177,7 +1177,7 @@ spec:
         - mountPath: /tmp/serviceaccount
           name: pod-secret
       - name: contrail-agent-nodemgr
-        image: "{{ CONTRAIL_REPO }}/contrail-nodemgr:latest"
+        image: "{{ CONTRAIL_REPO }}/contrail-nodemgr:{{ CONTRAIL_RELEASE }}"
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
