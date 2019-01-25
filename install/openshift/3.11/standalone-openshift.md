@@ -12,9 +12,9 @@ Required topology is as shown below.
 
 * Setup environment(all nodes):
   
-  * For centOS (origin installations) ( not supported ) : [click_here](/install/openshift/3.9/centos/configurations.md)
+  * For centOS (origin installations) ( not supported ) : 
   
-  * For Redhat (openshift-enterprise installations) : [click_here](/install/openshift/3.9/redhat/configurations.md)
+  * For Redhat (openshift-enterprise installations) : [click_here](/install/openshift/3.11/redhat/configurations.md)
 
 * Get the files from the released and verified tar or git clone below : 
 
