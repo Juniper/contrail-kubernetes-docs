@@ -6,7 +6,7 @@ The following steps will install a standalone openshift cluster with Contrail as
 Provisioning of Openshift and Contrail is done through Ansible-playbooks.
 Required topology is as shown below.
 
-![Contrail Standalone Solution](/images/standalone-openshift-3.9.png)
+![Contrail Standalone Solution](/images/standalone-openshift-3.11.png)
 
 ### Steps :
 
