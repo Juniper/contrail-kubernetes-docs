@@ -85,8 +85,8 @@ openshift_disable_check=memory_availability,package_availability,disk_availabili
 # Default node selectors
 openshift_hosted_infra_selector="node-role.kubernetes.io/infra=true"
 
-oreg_auth_user=contrail.systems
-oreg_auth_password=Embe1mpls_007
+oreg_auth_user=<>
+oreg_auth_password=<>
 ###########################################################################
 ### OpenShift Master Vars
 ###########################################################################
@@ -109,17 +109,11 @@ openshift_enable_unsupported_configurations=True
 
 contrail_version=5.0
 
-contrail_container_tag=5.0.1-0.214
-contrail_registry_insecure=false
-contrail_registry="hub.juniper.net/contrail"
-contrail_registry_username=JNPR-FieldUser64
-contrail_registry_password=fNqaCUMY2wS6DmbVs5R8
-
 contrail_container_tag=5.0.2-0.398-queens
 contrail_registry_insecure=false
 contrail_registry="hub.juniper.net/contrail-nightly"
-contrail_registry_username=JNPR-Customer200
-contrail_registry_password=FSg0vLW^7oM#GZy8Ju*f
+contrail_registry_username=<>
+contrail_registry_password=<>
 
 #contrail_os_release=redhat7
 #analyticsdb_min_diskgb=50
@@ -311,6 +305,257 @@ a6s41node2 openshift_hostname=a6s41node2
 
 ### Sample ose-install file for HA:
 ```yaml
+[OSEv3:vars]
+
+###########################################################################
+### Ansible Vars
+###########################################################################
+#timeout=60
+
+###########################################################################
+### OpenShift Basic Vars
+###########################################################################
+openshift_deployment_type=openshift-enterprise
+deployment_type=openshift-enterprise
+containerized=false
+openshift_disable_check=memory_availability,package_availability,disk_availability,package_version,docker_storage
+
+# Default node selectors
+openshift_hosted_infra_selector="node-role.kubernetes.io/infra=true"
+
+oreg_auth_user=<>
+oreg_auth_password=<>
+###########################################################################
+### OpenShift Master Vars
+###########################################################################
+
+openshift_master_api_port=8443
+openshift_master_console_port=8443
+
+openshift_master_cluster_method=native
+openshift_master_cluster_hostname=lb
+openshift_master_cluster_public_hostname=lb
+#openshift_master_default_subdomain=
+
+# Set this line to enable NFS
+openshift_enable_unsupported_configurations=True
+
+
+#########################################################################
+### Contrail Variables
+########################################################################
+
+contrail_version=5.0
+openshift_use_contrail=true
+
+contrail_container_tag=5.0.2-0.398-queens
+contrail_registry_insecure=false
+contrail_registry="hub.juniper.net/contrail-nightly"
+contrail_registry_username=<>
+contrail_registry_password=<>
+
+
+#contrail_os_release=redhat7
+#analyticsdb_min_diskgb=50
+#configdb_min_diskgb=25
+#aaa_mode=no-auth
+#auth_mode=noauth
+#CLOUD_ORCHESTRATOR=openshift
+#LOG_LEVEL=SYS_NOTICE
+#METADATA_PROXY_SECRET=contrail
+#cloud_orchestrator=kubernetes
+#metadata_proxy_secret=contrail
+#log_level=SYS_NOTICE
+#rabbitmq_node_port=5672
+#zookeeper_analytics_port=2182
+#zookeeper_port=2181
+#zookeeper_ports=2888:3888
+#zookeeper_analytics_ports=4888:5888
+#vrouter_gateway=172.31.16.1
+#vrouter_physical_interface=eth0
+#kubernetes_api_secure_port=443
+#nested_mode_contrail=false
+
+# vip should be master
+#api_vip="172.31.25.175"
+
+service_subnets="172.30.0.0/16"
+pod_subnets="10.128.0.0/14"
+
+
+###########################################################################
+### OpenShift Network Vars
+###########################################################################
+
+#os_sdn_network_plugin_name='redhat/openshift-ovs-networkpolicy'
+openshift_use_openshift_sdn=false
+r_openshift_node_use_openshift_sdn=True
+os_sdn_network_plugin_name='cni'
+
+###########################################################################
+### OpenShift Authentication Vars
+###########################################################################
+
+# htpasswd Authentication
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider'}]
+
+
+###########################################################################
+### OpenShift Router and Registry Vars
+###########################################################################
+
+openshift_hosted_router_replicas=1
+
+openshift_hosted_registry_replicas=1
+
+openshift_hosted_registry_storage_kind=nfs
+openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
+openshift_hosted_registry_storage_nfs_directory=/export
+openshift_hosted_registry_storage_nfs_options='*(rw,root_squash)'
+openshift_hosted_registry_storage_volume_name=registry
+openshift_hosted_registry_storage_volume_size=10Gi
+openshift_hosted_registry_pullthrough=true
+openshift_hosted_registry_acceptschema2=true
+openshift_hosted_registry_enforcequota=true
+openshift_hosted_router_selector="node-role.kubernetes.io/infra=true"
+openshift_hosted_registry_selector="node-role.kubernetes.io/infra=true"
+###########################################################################
+### OpenShift Service Catalog Vars
+###########################################################################
+
+openshift_enable_service_catalog=true
+
+template_service_broker_install=true
+openshift_template_service_broker_namespaces=['openshift']
+
+ansible_service_broker_install=true
+ansible_service_broker_local_registry_whitelist=['.*-apb$']
+
+openshift_hosted_etcd_storage_kind=nfs
+openshift_hosted_etcd_storage_nfs_options="*(rw,root_squash,sync,no_wdelay)"
+openshift_hosted_etcd_storage_nfs_directory=/export
+openshift_hosted_etcd_storage_labels={'storage': 'etcd-asb'}
+openshift_hosted_etcd_storage_volume_name=etcd-asb
+openshift_hosted_etcd_storage_access_modes=['ReadWriteOnce']
+openshift_hosted_etcd_storage_volume_size=10G
+
+
+###########################################################################
+### OpenShift Metrics and Logging Vars
+###########################################################################
+# Enable cluster metrics
+openshift_metrics_install_metrics=True
+
+openshift_metrics_storage_kind=nfs
+openshift_metrics_storage_access_modes=['ReadWriteOnce']
+openshift_metrics_storage_nfs_directory=/export
+openshift_metrics_storage_nfs_options='*(rw,root_squash)'
+openshift_metrics_storage_volume_name=metrics
+openshift_metrics_storage_volume_size=10Gi
+openshift_metrics_storage_labels={'storage': 'metrics'}
+
+openshift_metrics_cassandra_nodeselector={"node-role.kubernetes.io/infra":"true"}
+openshift_metrics_hawkular_nodeselector={"node-role.kubernetes.io/infra":"true"}
+openshift_metrics_heapster_nodeselector={"node-role.kubernetes.io/infra":"true"}
+
+# Enable cluster logging
+openshift_logging_install_logging=True
+
+openshift_logging_storage_kind=nfs
+openshift_logging_storage_access_modes=['ReadWriteOnce']
+openshift_logging_storage_nfs_directory=/export
+openshift_logging_storage_nfs_options='*(rw,root_squash)'
+openshift_logging_storage_volume_name=logging
+openshift_logging_storage_volume_size=10Gi
+openshift_logging_storage_labels={'storage': 'logging'}
+
+openshift_logging_kibana_hostname=kibana.apps.ap-southeast-1.compute.amazonaws.com
+openshift_logging_es_cluster_size=1
+
+openshift_logging_es_nodeselector={"node-role.kubernetes.io/infra":"true"}
+openshift_logging_kibana_nodeselector={"node-role.kubernetes.io/infra":"true"}
+openshift_logging_curator_nodeselector={"node-role.kubernetes.io/infra":"true"}
+
+
+###########################################################################
+### OpenShift Prometheus Vars
+###########################################################################
+
+## Add Prometheus Metrics:
+openshift_hosted_prometheus_deploy=true
+openshift_prometheus_node_selector={"node-role.kubernetes.io/infra":"true"}
+openshift_prometheus_namespace=openshift-metrics
+
+# Prometheus
+openshift_prometheus_storage_kind=nfs
+openshift_prometheus_storage_access_modes=['ReadWriteOnce']
+openshift_prometheus_storage_nfs_directory=/export
+openshift_prometheus_storage_nfs_options='*(rw,root_squash)'
+openshift_prometheus_storage_volume_name=prometheus
+openshift_prometheus_storage_volume_size=10Gi
+openshift_prometheus_storage_labels={'storage': 'prometheus'}
+openshift_prometheus_storage_type='pvc'
+# For prometheus-alertmanager
+openshift_prometheus_alertmanager_storage_kind=nfs
+openshift_prometheus_alertmanager_storage_access_modes=['ReadWriteOnce']
+openshift_prometheus_alertmanager_storage_nfs_directory=/export
+openshift_prometheus_alertmanager_storage_nfs_options='*(rw,root_squash)'
+openshift_prometheus_alertmanager_storage_volume_name=prometheus-alertmanager
+openshift_prometheus_alertmanager_storage_volume_size=10Gi
+openshift_prometheus_alertmanager_storage_labels={'storage': 'prometheus-alertmanager'}
+openshift_prometheus_alertmanager_storage_type='pvc'
+# For prometheus-alertbuffer
+openshift_prometheus_alertbuffer_storage_kind=nfs
+openshift_prometheus_alertbuffer_storage_access_modes=['ReadWriteOnce']
+openshift_prometheus_alertbuffer_storage_nfs_directory=/export
+openshift_prometheus_alertbuffer_storage_nfs_options='*(rw,root_squash)'
+openshift_prometheus_alertbuffer_storage_volume_name=prometheus-alertbuffer
+openshift_prometheus_alertbuffer_storage_volume_size=10Gi
+openshift_prometheus_alertbuffer_storage_labels={'storage': 'prometheus-alertbuffer'}
+openshift_prometheus_alertbuffer_storage_type='pvc'
+
+
+###########################################################################
+### OpenShift Hosts
+###########################################################################
+[OSEv3:children]
+masters
+etcd
+nodes
+nfs
+lb
+openshift_ca
+
+[masters]
+kube-master-0-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master0
+kube-master-1-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master1
+kube-master-2-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master2
+
+[etcd]
+kube-master-0-e4c1bd8c1f8740e18aca00c95fcb5936
+kube-master-1-e4c1bd8c1f8740e18aca00c95fcb5936
+kube-master-2-e4c1bd8c1f8740e18aca00c95fcb5936
+
+[nodes]
+kube-master-0-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master0 openshift_node_group_name='node-config-master'
+kube-master-1-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master1 openshift_node_group_name='node-config-master'
+kube-master-2-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master2 openshift_node_group_name='node-config-master'
+controller-0-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=infra0 openshift_node_group_name='node-config-infra'
+controller-1-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=infra1 openshift_node_group_name='node-config-infra'
+controller-2-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=infra2 openshift_node_group_name='node-config-infra'
+compute-0-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=compute0 openshift_node_group_name='node-config-compute'
+
+[nfs]
+compute-1-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=compute1
+
+[lb]
+load-balancer-0-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=lb
+
+[openshift_ca]
+kube-master-0-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master0
+kube-master-1-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master1
+kube-master-2-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master2
+
 ```
 
 
