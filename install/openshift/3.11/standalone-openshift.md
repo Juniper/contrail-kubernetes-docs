@@ -7,6 +7,7 @@ Provisioning of Openshift and Contrail is done through Ansible-playbooks.
 Required topology is as shown below.
 
 ![Contrail Standalone Solution](/images/standalone-openshift-3.11.png)
+* Note : vrouter is now installed on all nodes, the figure above does not have vrouter on master
 
 ### Steps :
 
