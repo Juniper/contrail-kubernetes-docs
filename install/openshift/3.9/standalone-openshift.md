@@ -215,7 +215,6 @@ openshift_enable_service_catalog=false
 openshift_use_openshift_sdn=false
 os_sdn_network_plugin_name='cni'
 openshift_disable_check=disk_availability,package_version,docker_storage
-openshift_docker_insecure_registries=ci-repo.englab.juniper.net:5010
 openshift_web_console_install=false
 openshift_web_console_contrail_install=true
 openshift_web_console_nodeselector={'region':'infra'}
