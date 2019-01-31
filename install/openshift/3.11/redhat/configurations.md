@@ -1,4 +1,5 @@
-```subscription-manager register --username <> --password <> --force
+```
+subscription-manager register --username <> --password <> --force
 subscription-manager attach --pool=<>
 
 subscription-manager repos --disable="*"
