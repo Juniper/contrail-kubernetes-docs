@@ -113,6 +113,8 @@ and add following details to your ose-install file
 ```
 #Nested mode vars
 nested_mode_contrail=true
+rabbitmq_node_port=5673
+contrail_nested_masters_ip="1.1.1.1 2.2.2.2 3.3.3.3"
 auth_mode=keystone
 keystone_auth_host=<w.x.y.z>        <--- This should be the IP where Keystone service is running.
 keystone_auth_admin_tenant=admin
