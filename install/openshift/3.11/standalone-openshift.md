@@ -81,7 +81,7 @@ ansible-playbook -i inventory/ose-install playbooks/deploy_cluster.yml
 openshift_deployment_type=openshift-enterprise
 deployment_type=openshift-enterprise
 containerized=false
-openshift_disable_check=memory_availability,package_availability,disk_availability,package_version,docker_storage
+openshift_disable_check=memory_availability,package_availability,disk_availability,package_version,docker_storage,docker_image_availability
 
 # Default node selectors
 openshift_hosted_infra_selector="node-role.kubernetes.io/infra=true"
