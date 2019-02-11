@@ -192,7 +192,7 @@ template_service_broker_install=true
 openshift_template_service_broker_namespaces=['openshift']
 
 ansible_service_broker_install=true
-ansible_service_broker_local_registry_whitelist=['.*-asb$']
+ansible_service_broker_local_registry_whitelist=['.*-apb$']
 
 openshift_hosted_etcd_storage_kind=nfs
 openshift_hosted_etcd_storage_nfs_options="*(rw,root_squash,sync,no_wdelay)"
