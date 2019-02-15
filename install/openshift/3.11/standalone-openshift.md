@@ -559,9 +559,14 @@ kube-master-2-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master2
 
 ```
 
+### Issues
+* if there is a java error do, yum install java-1.8.0-openjdk-devel.x86_64 and rerun deploy_cluster
+* if the service_catalog is not passing but cluster is up fine, check /etc/resolv.conf whether it has cluster.local
+  in its search line, and nameserver as host ip
+* If you see pods being evicted or pending, check ur disk usage
+* If you see tcp timeout issue but the master is up fine and you can reach it, check network connectivity speeds (usually vms         have this problem )
 
 ### Note:
-* dnsmasq on master needs to be restarted after installation if dns is not working as expected.
 * use "oc adm manage-node --selector=region=infra --schedulable=false" to make infra nodes non schedulable
 
 
