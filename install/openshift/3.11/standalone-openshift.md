@@ -86,6 +86,7 @@ openshift_disable_check=memory_availability,package_availability,disk_availabili
 # Default node selectors
 openshift_hosted_infra_selector="node-role.kubernetes.io/infra=true"
 
+# Redhat customer credentials
 oreg_auth_user=<>
 oreg_auth_password=<>
 ###########################################################################
@@ -289,18 +290,18 @@ nodes
 nfs
 
 [masters]
-a6s41node1 openshift_hostname=a6s41node1
+a6s41node1
 
 [etcd]
 a6s41node1
 
 [nodes]
-a6s41node1 openshift_hostname=a6s41node1 openshift_node_group_name='node-config-master'
-a6s41node2 openshift_hostname=a6s41node2 openshift_node_group_name='node-config-compute'
-a6s4node1 openshift_hostname=a6s4node1 openshift_node_group_name='node-config-infra'
+a6s41node1 openshift_node_group_name='node-config-master'
+a6s41node2 openshift_node_group_name='node-config-compute'
+a6s4node1 openshift_node_group_name='node-config-infra'
 
 [nfs]
-a6s41node2 openshift_hostname=a6s41node2
+a6s41node2
 
 ```
 
@@ -528,9 +529,9 @@ lb
 openshift_ca
 
 [masters]
-kube-master-0-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master0
-kube-master-1-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master1
-kube-master-2-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master2
+kube-master-0-e4c1bd8c1f8740e18aca00c95fcb5936
+kube-master-1-e4c1bd8c1f8740e18aca00c95fcb5936
+kube-master-2-e4c1bd8c1f8740e18aca00c95fcb5936
 
 [etcd]
 kube-master-0-e4c1bd8c1f8740e18aca00c95fcb5936
@@ -538,24 +539,24 @@ kube-master-1-e4c1bd8c1f8740e18aca00c95fcb5936
 kube-master-2-e4c1bd8c1f8740e18aca00c95fcb5936
 
 [nodes]
-kube-master-0-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master0 openshift_node_group_name='node-config-master'
-kube-master-1-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master1 openshift_node_group_name='node-config-master'
-kube-master-2-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master2 openshift_node_group_name='node-config-master'
-controller-0-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=infra0 openshift_node_group_name='node-config-infra'
-controller-1-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=infra1 openshift_node_group_name='node-config-infra'
-controller-2-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=infra2 openshift_node_group_name='node-config-infra'
-compute-0-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=compute0 openshift_node_group_name='node-config-compute'
+kube-master-0-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_node_group_name='node-config-master'
+kube-master-1-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_node_group_name='node-config-master'
+kube-master-2-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_node_group_name='node-config-master'
+controller-0-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_node_group_name='node-config-infra'
+controller-1-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_node_group_name='node-config-infra'
+controller-2-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_node_group_name='node-config-infra'
+compute-0-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_node_group_name='node-config-compute'
 
 [nfs]
-compute-1-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=compute1
+compute-1-e4c1bd8c1f8740e18aca00c95fcb5936
 
 [lb]
-load-balancer-0-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=lb
+load-balancer-0-e4c1bd8c1f8740e18aca00c95fcb5936
 
 [openshift_ca]
-kube-master-0-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master0
-kube-master-1-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master1
-kube-master-2-e4c1bd8c1f8740e18aca00c95fcb5936 openshift_hostname=master2
+kube-master-0-e4c1bd8c1f8740e18aca00c95fcb5936
+kube-master-1-e4c1bd8c1f8740e18aca00c95fcb5936
+kube-master-2-e4c1bd8c1f8740e18aca00c95fcb5936
 
 ```
 
