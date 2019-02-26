@@ -177,7 +177,7 @@ openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
 openshift_hosted_registry_storage_nfs_directory=/export
 openshift_hosted_registry_storage_nfs_options='*(rw,root_squash)'
 openshift_hosted_registry_storage_volume_name=registry
-openshift_hosted_registry_storage_volume_size=1Gi
+openshift_hosted_registry_storage_volume_size=10Gi
 openshift_hosted_registry_pullthrough=true
 openshift_hosted_registry_acceptschema2=true
 openshift_hosted_registry_enforcequota=true
@@ -201,7 +201,7 @@ openshift_hosted_etcd_storage_nfs_directory=/export
 openshift_hosted_etcd_storage_labels={'storage': 'etcd-asb'}
 openshift_hosted_etcd_storage_volume_name=etcd-asb
 openshift_hosted_etcd_storage_access_modes=['ReadWriteOnce']
-openshift_hosted_etcd_storage_volume_size=1G
+openshift_hosted_etcd_storage_volume_size=10G
 
 
 ###########################################################################
@@ -215,7 +215,7 @@ openshift_metrics_storage_access_modes=['ReadWriteOnce']
 openshift_metrics_storage_nfs_directory=/export
 openshift_metrics_storage_nfs_options='*(rw,root_squash)'
 openshift_metrics_storage_volume_name=metrics
-openshift_metrics_storage_volume_size=1Gi
+openshift_metrics_storage_volume_size=10Gi
 openshift_metrics_storage_labels={'storage': 'metrics'}
 
 openshift_metrics_cassandra_nodeselector={"node-role.kubernetes.io/infra":"true"}
@@ -230,7 +230,7 @@ openshift_logging_storage_access_modes=['ReadWriteOnce']
 openshift_logging_storage_nfs_directory=/export
 openshift_logging_storage_nfs_options='*(rw,root_squash)'
 openshift_logging_storage_volume_name=logging
-openshift_logging_storage_volume_size=1Gi
+openshift_logging_storage_volume_size=10Gi
 openshift_logging_storage_labels={'storage': 'logging'}
 
 openshift_logging_es_cluster_size=1
@@ -255,7 +255,7 @@ openshift_prometheus_storage_access_modes=['ReadWriteOnce']
 openshift_prometheus_storage_nfs_directory=/export
 openshift_prometheus_storage_nfs_options='*(rw,root_squash)'
 openshift_prometheus_storage_volume_name=prometheus
-openshift_prometheus_storage_volume_size=1Gi
+openshift_prometheus_storage_volume_size=10Gi
 openshift_prometheus_storage_labels={'storage': 'prometheus'}
 openshift_prometheus_storage_type='pvc'
 
@@ -265,7 +265,7 @@ openshift_prometheus_alertmanager_storage_access_modes=['ReadWriteOnce']
 openshift_prometheus_alertmanager_storage_nfs_directory=/export
 openshift_prometheus_alertmanager_storage_nfs_options='*(rw,root_squash)'
 openshift_prometheus_alertmanager_storage_volume_name=prometheus-alertmanager
-openshift_prometheus_alertmanager_storage_volume_size=1Gi
+openshift_prometheus_alertmanager_storage_volume_size=10Gi
 openshift_prometheus_alertmanager_storage_labels={'storage': 'prometheus-alertmanager'}
 openshift_prometheus_alertmanager_storage_type='pvc'
 
@@ -275,7 +275,7 @@ openshift_prometheus_alertbuffer_storage_access_modes=['ReadWriteOnce']
 openshift_prometheus_alertbuffer_storage_nfs_directory=/export
 openshift_prometheus_alertbuffer_storage_nfs_options='*(rw,root_squash)'
 openshift_prometheus_alertbuffer_storage_volume_name=prometheus-alertbuffer
-openshift_prometheus_alertbuffer_storage_volume_size=1Gi
+openshift_prometheus_alertbuffer_storage_volume_size=10Gi
 openshift_prometheus_alertbuffer_storage_labels={'storage': 'prometheus-alertbuffer'}
 openshift_prometheus_alertbuffer_storage_type='pvc'
 
