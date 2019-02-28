@@ -9,6 +9,16 @@ Required topology is as shown below.
 ![Contrail Standalone Solution](/images/standalone-openshift-3.11.png)
 * Note : vrouter is now installed on all nodes, the figure above does not have vrouter on master
 
+### System Requirements :
+As per openshift recommendation follow the link
+https://docs.openshift.com/container-platform/3.11/install/prerequisites.html
+
+But recommended,
+* Master  :- 16G RAM/8 vcpus/100G space
+* Infra   :- 64G RAM/16 vcpus/100G space
+* compute :- as per openshift recommendation
+* NFS     :- if nfs mount volumes are used please check disk capacity and mounts 
+
 ### Steps :
 
 * Setup environment(all nodes):
@@ -824,6 +834,8 @@ kube-master-2-e4c1bd8c1f8740e18aca00c95fcb5936
   in its search line, and nameserver as host ip
 * If you see pods being evicted or pending, check ur disk usage
 * If you see tcp timeout issue but the master is up fine and you can reach it, check network connectivity speeds (usually vms         have this problem )
+* ntp is installed by openshift and should be synchronized by user (does not affect any functionality of contrail, but shows up in contrail-status output).
+
 
 ### Note:
 * use "oc adm manage-node --selector=region=infra --schedulable=false" to make infra nodes non schedulable
