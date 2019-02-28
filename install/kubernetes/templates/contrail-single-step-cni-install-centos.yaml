@@ -16,7 +16,7 @@ data:
   ZOOKEEPER_NODES: {{ K8S_MASTER_IP }}
   RABBITMQ_NODES: {{ K8S_MASTER_IP }}
   CONTROLLER_NODES: {{ K8S_MASTER_IP }}
-  VROUTER_GATEWAY: {{ K8S_MASTER_IP }}
+  
 ---
 apiVersion: v1
 kind: ConfigMap
