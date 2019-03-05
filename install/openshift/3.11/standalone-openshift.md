@@ -6,7 +6,7 @@ The following steps will install a standalone openshift cluster with Contrail as
 Provisioning of Openshift and Contrail is done through Ansible-playbooks.
 Required topology is as shown below.
 
-![Contrail Standalone Solution](/images/OCP 3.11.png)
+![Contrail Standalone Solution](/images/OCP\ 3.11.png)
 * Note : vrouter is now installed on all nodes, the figure above does not have vrouter on master
 
 ### System Requirements :
