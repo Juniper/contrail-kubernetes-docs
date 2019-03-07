@@ -11,5 +11,5 @@ subscription-manager repos \
     --enable=rhel-7-fast-datapath-rpms \
     --enable="rhel-7-server-ansible-2.6-rpms"
 
-yum install -y tcpdump wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct python-netaddr ansible
+yum install -y tcpdump wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct python-netaddr openshift-ansible
 ```
