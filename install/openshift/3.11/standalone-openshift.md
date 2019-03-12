@@ -832,8 +832,6 @@ kube-master-2-e4c1bd8c1f8740e18aca00c95fcb5936
 * if there is a java error do, yum install java-1.8.0-openjdk-devel.x86_64 and rerun deploy_cluster
 * if the service_catalog is not passing but cluster is up fine, check /etc/resolv.conf whether it has cluster.local
   in its search line, and nameserver as host ip
-* If you see pods being evicted or pending, check ur disk usage
-* If you see tcp timeout issue but the master is up fine and you can reach it, check network connectivity speeds (usually vms         have this problem )
 * ntp is installed by openshift and should be synchronized by user (does not affect any functionality of contrail, but shows up in contrail-status output).
 * If ansible_service_broker component of openshift is not up and its "ansible_service_broker_deploy" shows error it means that the "ansible_service_broker" pod did not come up fine. The reason usually is it failed liveliness and readiness checks. Modify the liveliness and readiness check of this pod when its brought up to make it running. The root cause is the redhat url not correct, verify that the pod uses correct url.
 
