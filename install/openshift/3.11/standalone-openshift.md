@@ -17,7 +17,7 @@ But recommended,
 * Master  :- 16G RAM/8 vcpus/100G space
 * Infra   :- 64G RAM/16 vcpus/100G space
 * compute :- as per openshift recommendation
-* NFS     :- if nfs mount volumes are used please check disk capacity and mounts 
+* NFS     :- if nfs mount volumes are used please check disk capacity and mounts, also openshift-logging with nfs is not recommended by openshift
 
 ### Steps :
 
