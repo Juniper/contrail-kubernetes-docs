@@ -365,6 +365,8 @@ contrail_registry_insecure=false
 contrail_registry="hub.juniper.net/contrail-nightly"
 contrail_registry_username=<>
 contrail_registry_password=<>
+# need to notify openshift to configure insecure registry as below
+#openshift_docker_insecure_registries="opencontrailnightly"
 
 nested_mode_contrail=true
 auth_mode=keystone
@@ -624,6 +626,8 @@ contrail_registry_insecure=false
 contrail_registry="hub.juniper.net/contrail-nightly"
 contrail_registry_username=<>
 contrail_registry_password=<>
+# need to notify openshift to configure insecure registry as below
+#openshift_docker_insecure_registries="opencontrailnightly"
 
 
 #contrail_os_release=redhat7
