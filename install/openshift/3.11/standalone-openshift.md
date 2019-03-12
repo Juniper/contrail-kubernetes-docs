@@ -122,10 +122,11 @@ openshift_enable_unsupported_configurations=True
 contrail_version=5.0
 
 contrail_container_tag=5.0.2-0.398-queens
-contrail_registry_insecure=false
 contrail_registry="hub.juniper.net/contrail-nightly"
 contrail_registry_username=<>
 contrail_registry_password=<>
+# need to notify openshift to configure insecure registry as below
+#openshift_docker_insecure_registries="opencontrailnightly"
 
 #contrail_os_release=redhat7
 #analyticsdb_min_diskgb=50
