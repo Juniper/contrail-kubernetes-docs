@@ -128,4 +128,8 @@ k8s_nested_vrouter_vip=10.10.10.5   <-- Service IP configured for CNI to Agent c
 k8s_vip=<W.X.Y.Z>                   <-- IP of the Openshift Master Node.
 #cluster_network is the one which vm network belongs to
 cluster_network="{'domain': 'default-domain', 'project': 'admin', 'name': 'net1'}" <-- FQName of the Virtual Network where Virtual Machines are running. There are the VM's in which Openshift cluster is being installed in nested mode.
+#config_nodes="x.x.x.x,y.y.y.y.y"
+#analytics_nodes="x.x.x.x,y.y.y.y.y"
+#config_api_vip=x.x.x.x
+#analytics_api_vip=x.x.x.x
 ```
