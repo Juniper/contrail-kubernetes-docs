@@ -67,11 +67,17 @@ global_configuration:
 swapoff -a
 ```
 
-### Step 6.	Configure the nodes.
+### Step 6.     Install python on all the nodes
+```
+sudo yum install python
+```
+
+
+### Step 7.	Configure the nodes.
 ```
 ansible-playbook -e orchestrator=kubernetes -i inventory/ playbooks/configure_instances.yml
 ```
-### Step 7.	Install Kubernetes and Contrail.
+### Step 8.	Install Kubernetes and Contrail.
 ```
 ansible-playbook -e orchestrator=kubernetes -i inventory/ playbooks/install_k8s.yml
 ansible-playbook -e orchestrator=kubernetes -i inventory/ playbooks/install_contrail.yml
