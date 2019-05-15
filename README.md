@@ -25,7 +25,7 @@ this for anything other than quick tryouts.***
 
 Contrail provides more than one way of providing networking to a K8s cluster.
 
-### [Standalone Kubernetes](install/kubernetes/standalone-kubernete-ansible.md)
+### [Standalone Kubernetes](install/kubernetes/standalone-kubernetes-ansible.md)
 ### [Nested Kubernetes](install/kubernetes/nested-kubernetes.md)
 ### [Non-Nested Kubernetes](install/kubernetes/non-nested-kubernetes.md)
 

@@ -90,7 +90,7 @@
    
     a. [1-step install](https://github.com/Juniper/contrail-kubernetes-docs/blob/master/install/kubernetes/standalone-kubernetes-ubuntu.md)
     
-    b. [Ansible playbook](https://github.com/Juniper/contrail-kubernetes-docs/blob/master/install/kubernetes/standalone-kubernete-ansible.md)
+    b. [Ansible playbook](https://github.com/Juniper/contrail-kubernetes-docs/blob/master/install/kubernetes/standalone-kubernetes-ansible.md)
     
         In this case you need to run asible from a node or another virtual machine that can reach the k8s virtual machines.
        
