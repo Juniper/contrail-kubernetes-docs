@@ -867,3 +867,7 @@ https://<your host name from your ose-install inventory>:8443/console
 * Note : your dns should resolve for the above hostname for access, else modify your /etc/hosts file to route
   to above host
 
+
+### FAQ
+* If you copy paste to the inventory file please check for unicode characters.
+* Please use -vvv in your ansible runs for more logs
