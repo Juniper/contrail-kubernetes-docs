@@ -591,7 +591,7 @@ a6s41node2 openshift_hostname=a6s41node2
 openshift_deployment_type=openshift-enterprise
 deployment_type=openshift-enterprise
 containerized=false
-openshift_disable_check=memory_availability,package_availability,disk_availability,package_version,docker_storage
+openshift_disable_check=docker_image_availability,memory_availability,package_availability,disk_availability,package_version,docker_storage
 
 # Default node selectors
 openshift_hosted_infra_selector="node-role.kubernetes.io/infra=true"
