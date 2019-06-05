@@ -114,7 +114,7 @@ and add following details to your ose-install file
 #Nested mode vars
 nested_mode_contrail=true
 rabbitmq_node_port=5673
-contrail_nested_masters_ip="1.1.1.1 2.2.2.2 3.3.3.3"
+contrail_nested_masters_ip="1.1.1.1 2.2.2.2 3.3.3.3"          <---  ips of contrail controllers
 auth_mode=keystone
 keystone_auth_host=<w.x.y.z>        <--- This should be the IP where Keystone service is running.
 keystone_auth_admin_tenant=admin
@@ -127,9 +127,14 @@ k8s_nested_vrouter_vip=10.10.10.5   <-- Service IP configured for CNI to Agent c
 #k8s_vip is kubernetes api server ip
 k8s_vip=<W.X.Y.Z>                   <-- IP of the Openshift Master Node.
 #cluster_network is the one which vm network belongs to
-cluster_network="{'domain': 'default-domain', 'project': 'admin', 'name': 'net1'}" <-- FQName of the Virtual Network where Virtual Machines are running. There are the VM's in which Openshift cluster is being installed in nested mode.
+cluster_network="{'domain': 'default-domain', 'project': 'admin', 'name': 'net1'}" <-- FQName of the Virtual Network where Virtual Machines are running. The VMs in which Openshift cluster is being installed in nested mode.
 #config_nodes="x.x.x.x,y.y.y.y.y"
 #analytics_nodes="x.x.x.x,y.y.y.y.y"
 #config_api_vip=x.x.x.x
 #analytics_api_vip=x.x.x.x
 ```
+
+## Note :
+
+1. Your control data interface should have internet connectivity for some of openshift infra components to work.
+2. Make sure your configurations above are correct, please verify it with the contrail which you are using.
