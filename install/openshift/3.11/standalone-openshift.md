@@ -14,7 +14,7 @@ As per openshift recommendation follow the link
 https://docs.openshift.com/container-platform/3.11/install/prerequisites.html
 
 But recommended,
-* Master  :- 16G RAM/8 vcpus/100G space
+* Master  :- 16G RAM/8 vcpus/100G space     ( this is for bare minimum openshift components, if you run more pods scale accordingly, same goes for infra node running openshift and contrail components )
 * Infra   :- 64G RAM/16 vcpus/100G space
 * compute :- as per openshift recommendation
 * NFS     :- if nfs mount volumes are used please check disk capacity and mounts, also openshift-logging with nfs is not recommended by openshift
